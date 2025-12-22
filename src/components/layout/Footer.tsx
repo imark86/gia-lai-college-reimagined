@@ -1,10 +1,11 @@
-import { Phone, Mail, MapPin, Facebook, Youtube, Globe } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Youtube, Globe, Send, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const trainingLocations = [
-  "Cách Mạng Tháng 8, P. Pleiku, Gia Lai",
-  "140 Nguyễn Chí Thanh, P. Hội Phú, Gia Lai",
-  "282 Hoàng Hoa Thám, P. An Khê, Gia Lai",
-  "69 Nguyễn Huệ, P. Ayun Pa, Gia Lai",
+  "Cách Mạng Tháng 8, P. Pleiku",
+  "140 Nguyễn Chí Thanh, P. Hội Phú",
+  "282 Hoàng Hoa Thám, P. An Khê",
+  "69 Nguyễn Huệ, P. Ayun Pa",
 ];
 
 const quickLinks = [
@@ -13,141 +14,147 @@ const quickLinks = [
   { label: "Thư viện điện tử", href: "https://cdgl.edu.vn/category/thu-vien-dien-tu/" },
   { label: "Ngân hàng việc làm", href: "https://cdgl.edu.vn/tong-hop-thong-tin-viec-lam/" },
   { label: "Văn bản pháp quy", href: "https://cdgl.edu.vn/category/van-ban-bieu-mau/van-ban-phap-quy/" },
-  { label: "Kiểm định chất lượng", href: "https://cdgl.edu.vn/kiem-dinh/" },
+];
+
+const khoaLinks = [
+  { label: "Điện - Điện tử - Tin học", href: "/nganh/dien-dien-tu-tin-hoc" },
+  { label: "Y - Dược", href: "/nganh/y-duoc" },
+  { label: "Nghiệp vụ - Du lịch", href: "/nganh/nghiep-vu-du-lich" },
+  { label: "Cơ khí - Xây dựng", href: "/nganh/co-khi-xay-dung" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About & Trụ sở chính */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-12 w-12 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">GL</span>
-              </div>
-              <div>
-                <h3 className="font-bold">TRƯỜNG CAO ĐẲNG</h3>
-                <p className="text-sm text-secondary">GIA LAI</p>
-              </div>
-            </div>
-            <div className="space-y-3 text-sm">
-              <div>
-                <p className="font-semibold text-secondary mb-1">Trụ sở chính:</p>
-                <p className="text-primary-foreground/80">Đường Trần Nhật Duật - P. Diên Hồng - Tỉnh Gia Lai</p>
-              </div>
-              <div>
-                <p className="font-semibold text-secondary mb-1">Địa chỉ liên hệ:</p>
-                <p className="text-primary-foreground/80">Khu Đô Thị Diên Phú - Diên Hồng - Tỉnh Gia Lai</p>
-              </div>
-            </div>
-            <p className="text-xs text-primary-foreground/60 italic mt-4">
-              Vững nghề nghiệp - Sáng tương lai
-            </p>
-          </div>
-
-          {/* Địa điểm đào tạo */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-secondary">4 Địa điểm đào tạo</h4>
-            <ul className="space-y-2 text-sm">
-              {trainingLocations.map((location, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-secondary" />
-                  <span className="text-primary-foreground/80">{location}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact & Quick Links */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-secondary">Liên hệ</h4>
-            <ul className="space-y-3 text-sm mb-6">
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-secondary" />
-                <div>
-                  <a href="tel:02693825001" className="text-primary-foreground/80 hover:text-secondary transition-colors font-medium">
-                    02693.825001
-                  </a>
-                  <p className="text-xs text-primary-foreground/60">Điện thoại chính</p>
+    <footer className="relative overflow-hidden">
+      {/* Gradient top border */}
+      <div className="h-1 bg-gradient-primary" />
+      
+      {/* Background */}
+      <div className="bg-card/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* Brand */}
+            <div>
+              <Link to="/" className="flex items-center gap-3 mb-6 group">
+                <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow">
+                  <span className="text-primary-foreground font-bold text-xl font-display">GL</span>
                 </div>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="h-5 w-5 text-secondary text-center">Fax</span>
-                <span className="text-primary-foreground/80">02693.867739</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-secondary" />
-                <a href="mailto:info@cdgl.edu.vn" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <div>
+                  <h3 className="font-bold text-foreground font-display">CAO ĐẲNG GIA LAI</h3>
+                  <p className="text-xs text-foreground/50">Vững nghề nghiệp - Sáng tương lai</p>
+                </div>
+              </Link>
+              
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-foreground/80">Đường Trần Nhật Duật - P. Diên Hồng</p>
+                    <p className="text-foreground/50">Tỉnh Gia Lai</p>
+                  </div>
+                </div>
+                <a href="tel:02693825001" className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
+                  <Phone className="h-5 w-5 text-primary" />
+                  02693.825001
+                </a>
+                <a href="mailto:info@cdgl.edu.vn" className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
+                  <Mail className="h-5 w-5 text-primary" />
                   info@cdgl.edu.vn
                 </a>
-              </li>
-            </ul>
-            
-            <h4 className="font-semibold text-lg mb-3 text-secondary">Liên kết nhanh</h4>
-            <ul className="space-y-2 text-sm">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-primary-foreground/80 hover:text-secondary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+              </div>
+            </div>
+
+            {/* Địa điểm đào tạo */}
+            <div>
+              <h4 className="font-bold text-foreground mb-6 font-display">Địa Điểm Đào Tạo</h4>
+              <ul className="space-y-3 text-sm">
+                {trainingLocations.map((location, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <div className="h-2 w-2 rounded-full bg-gradient-primary mt-2 shrink-0" />
+                    <span className="text-foreground/60">{location}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-bold text-foreground mb-6 font-display">Liên Kết Nhanh</h4>
+              <ul className="space-y-3 text-sm">
+                {quickLinks.map((link) => (
+                  <li key={link.label}>
+                    <a 
+                      href={link.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group"
+                    >
+                      <Send className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Ngành hot */}
+            <div>
+              <h4 className="font-bold text-foreground mb-6 font-display">Ngành Hot 🔥</h4>
+              <ul className="space-y-3 text-sm mb-6">
+                {khoaLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link 
+                      to={link.href}
+                      className="text-foreground/60 hover:text-secondary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Social */}
+              <div className="flex gap-3">
+                <a
+                  href="https://www.fb.com/truongcaodanggialai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 w-10 rounded-xl glass flex items-center justify-center hover:bg-primary/20 transition-colors group"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5 text-foreground/60 group-hover:text-primary" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@gialaicollege"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 w-10 rounded-xl glass flex items-center justify-center hover:bg-primary/20 transition-colors group"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="h-5 w-5 text-foreground/60 group-hover:text-primary" />
+                </a>
+                <a
+                  href="https://cdgl.edu.vn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 w-10 rounded-xl glass flex items-center justify-center hover:bg-primary/20 transition-colors group"
+                  aria-label="Website"
+                >
+                  <Globe className="h-5 w-5 text-foreground/60 group-hover:text-primary" />
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Social & Working Hours */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 text-secondary">Kết nối với chúng tôi</h4>
-            <div className="flex gap-3 mb-6">
-              <a
-                href="https://www.fb.com/truongcaodanggialai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.youtube.com/@gialaicollege"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                href="https://cdgl.edu.vn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
-                aria-label="Website"
-              >
-                <Globe className="h-5 w-5" />
-              </a>
+          {/* Bottom */}
+          <div className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/40">
+            <p className="flex items-center gap-1">
+              © 2025 Trường Cao đẳng Gia Lai. Made with <Heart className="h-4 w-4 text-accent" /> in Vietnam
+            </p>
+            <div className="flex gap-6">
+              <a href="https://cdgl.edu.vn/category/van-ban-bieu-mau/quy-che-quy-dinh-quan-ly/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Quy chế</a>
+              <a href="https://cdgl.edu.vn/kiem-dinh/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Kiểm định</a>
             </div>
-            <div className="bg-primary-foreground/10 rounded-lg p-3">
-              <p className="text-xs text-primary-foreground/60 mb-2">Giờ làm việc</p>
-              <p className="text-sm">Thứ 2 - Thứ 6: 7:00 - 17:00</p>
-              <p className="text-sm">Thứ 7: 7:00 - 11:30</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="mt-10 pt-6 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
-          <p>© 2025 Trường Cao đẳng Gia Lai. Tất cả quyền được bảo lưu.</p>
-          <div className="flex gap-6">
-            <a href="https://cdgl.edu.vn/category/van-ban-bieu-mau/quy-che-quy-dinh-quan-ly/" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">Quy chế quy định</a>
-            <a href="https://cdgl.edu.vn/kiem-dinh/" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">Kiểm định</a>
           </div>
         </div>
       </div>

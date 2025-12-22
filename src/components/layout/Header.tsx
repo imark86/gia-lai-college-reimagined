@@ -88,7 +88,7 @@ export function Header() {
       return (
         <Link
           to={item.href}
-          className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+          className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary transition-colors rounded-lg"
         >
           {item.label}
         </Link>
@@ -99,7 +99,7 @@ export function Header() {
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+        className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary transition-colors rounded-lg"
       >
         {item.label}
       </a>
@@ -107,38 +107,19 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container mx-auto flex items-center justify-between px-4 py-2 text-sm">
-          <div className="flex items-center gap-6">
-            <a href="tel:02693825001" className="flex items-center gap-2 hover:text-secondary transition-colors">
-              <Phone className="h-4 w-4" />
-              <span className="hidden sm:inline">02693.825001</span>
-            </a>
-            <a href="mailto:info@cdgl.edu.vn" className="flex items-center gap-2 hover:text-secondary transition-colors">
-              <Mail className="h-4 w-4" />
-              <span className="hidden sm:inline">info@cdgl.edu.vn</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-primary-foreground/80">Tư vấn tuyển sinh: 02693.825001</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation */}
-      <nav className="bg-card shadow-card">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Glass navbar */}
+      <nav className="glass-strong border-b border-border/30">
         <div className="container mx-auto px-4">
-          <div className="flex h-20 items-center justify-between">
+          <div className="flex h-16 md:h-20 items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="relative h-14 w-14 rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                <span className="text-primary-foreground font-bold text-xl">GL</span>
+              <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-xl bg-gradient-primary flex items-center justify-center overflow-hidden shadow-glow">
+                <span className="text-primary-foreground font-bold text-lg md:text-xl font-display">GL</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-lg font-bold text-primary leading-tight">TRƯỜNG CAO ĐẲNG</h1>
-                <p className="text-sm font-semibold text-secondary">GIA LAI</p>
+                <h1 className="text-sm md:text-base font-bold text-foreground leading-tight font-display">CAO ĐẲNG</h1>
+                <p className="text-xs md:text-sm font-semibold text-gradient">GIA LAI</p>
               </div>
             </Link>
 
@@ -154,7 +135,7 @@ export function Header() {
                   {item.internal ? (
                     <Link
                       to={item.href}
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/10"
                     >
                       {item.label}
                       {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
@@ -164,14 +145,14 @@ export function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/10"
                     >
                       {item.label}
                       {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
                     </a>
                   )}
 
-                  {/* Two Column Dropdown for "Các đơn vị" */}
+                  {/* Two Column Dropdown */}
                   <AnimatePresence>
                     {item.hasTwoColumns && activeDropdown === item.label && (
                       <motion.div
@@ -179,12 +160,12 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 w-[600px] rounded-lg bg-card shadow-elevated border border-border overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-[580px] rounded-2xl glass-strong shadow-elevated overflow-hidden"
                       >
-                        <div className="grid grid-cols-2 divide-x divide-border">
+                        <div className="grid grid-cols-2 divide-x divide-border/30">
                           {item.columns?.map((column) => (
                             <div key={column.title} className="p-4">
-                              <h4 className="font-bold text-sm text-primary mb-3 pb-2 border-b border-border">
+                              <h4 className="font-bold text-xs text-primary mb-3 pb-2 border-b border-border/30 uppercase tracking-wider">
                                 {column.title}
                               </h4>
                               <ul className="space-y-1">
@@ -209,7 +190,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 w-56 rounded-lg bg-card shadow-elevated border border-border overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-56 rounded-2xl glass-strong shadow-elevated overflow-hidden p-2"
                       >
                         {item.children.map((child) => (
                           <a
@@ -217,7 +198,7 @@ export function Header() {
                             href={child.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+                            className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary transition-colors rounded-lg"
                           >
                             {child.label}
                           </a>
@@ -229,23 +210,23 @@ export function Header() {
               ))}
             </div>
 
-            {/* Search & Mobile Menu */}
+            {/* Right side */}
             <div className="flex items-center gap-3">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <Search className="h-5 w-5" />
-              </Button>
+              <a href="tel:02693825001" className="hidden md:flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors">
+                <Phone className="h-4 w-4" />
+                <span>02693.825001</span>
+              </a>
               <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
                 <Button
-                  variant="default"
-                  className="hidden md:flex bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                  className="hidden md:flex bg-gradient-primary text-primary-foreground hover:opacity-90 rounded-xl font-medium"
                 >
-                  Đăng ký tuyển sinh
+                  Đăng ký ngay
                 </Button>
               </a>
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden"
+                className="lg:hidden text-foreground"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -261,7 +242,7 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-border bg-card"
+              className="lg:hidden border-t border-border/30"
             >
               <div className="container mx-auto px-4 py-4 space-y-2">
                 {navItems.map((item) => (
@@ -269,7 +250,7 @@ export function Header() {
                     <Link
                       key={item.label}
                       to={item.href}
-                      className="block px-4 py-3 text-foreground hover:bg-muted rounded-md transition-colors"
+                      className="block px-4 py-3 text-foreground hover:bg-primary/10 rounded-xl transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -280,14 +261,14 @@ export function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-3 text-foreground hover:bg-muted rounded-md transition-colors"
+                      className="block px-4 py-3 text-foreground hover:bg-primary/10 rounded-xl transition-colors"
                     >
                       {item.label}
                     </a>
                   )
                 ))}
                 <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full mt-4 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                  <Button className="w-full mt-4 bg-gradient-primary text-primary-foreground hover:opacity-90 rounded-xl">
                     Đăng ký tuyển sinh
                   </Button>
                 </a>
