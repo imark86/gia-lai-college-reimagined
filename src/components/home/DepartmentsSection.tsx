@@ -1,71 +1,255 @@
 import { motion } from "framer-motion";
-import { Building2, GraduationCap, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2, GraduationCap } from "lucide-react";
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const phongTrungTam = [
-  { name: "Phòng Tổ chức - Hành chính", link: "https://cdgl.edu.vn/khoa/phong-to-chuc-hanh-chinh/" },
-  { name: "Phòng Đào tạo - Nghiên cứu khoa học & Hợp tác Quốc tế", link: "https://cdgl.edu.vn/khoa/phong-dao-tao-nckhhtqt/" },
-  { name: "Phòng Kế hoạch - Tài chính", link: "https://cdgl.edu.vn/khoa/phong-ke-hoach-tai-chinh/" },
-  { name: "Phòng Quản trị - Vật tư thiết bị", link: "https://cdgl.edu.vn/khoa/phong-quan-tri-vat-tu-thiet-bi/" },
-  { name: "Phòng Công tác Học sinh - Sinh viên", link: "https://cdgl.edu.vn/khoa/phong-cong-tac-hssv/" },
-  { name: "Phòng Đảm bảo chất lượng", link: "https://cdgl.edu.vn/khoa/phong-dam-bao-chat-luong/" },
-  { name: "Trung tâm Tuyển sinh và hỗ trợ Học sinh - Sinh viên", link: "https://cdgl.edu.vn/khoa/trung-tam-tuyen-sinh/" },
-  { name: "Trung tâm Tin học - Ngoại ngữ và Đào tạo Lái xe", link: "https://cdgl.edu.vn/khoa/trung-tam-tin-hoc-ngoai-ngu/" },
+  {
+    name: "Phòng Tổ chức - Hành chính",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-to-chuc-hanh-chinh/",
+  },
+  {
+    name: "Phòng Đào tạo - NCKH & HTQT",
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-dao-tao-nckhhtqt/",
+  },
+  {
+    name: "Phòng Kế hoạch - Tài chính",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-ke-hoach-tai-chinh/",
+  },
+  {
+    name: "Phòng Quản trị - Vật tư thiết bị",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-quan-tri-vat-tu-thiet-bi/",
+  },
+  {
+    name: "Phòng Công tác HSSV",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-cong-tac-hssv/",
+  },
+  {
+    name: "Phòng Đảm bảo chất lượng",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/phong-dam-bao-chat-luong/",
+  },
+  {
+    name: "TT Tuyển sinh & hỗ trợ HSSV",
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/trung-tam-tuyen-sinh/",
+  },
+  {
+    name: "TT Tin học - Ngoại ngữ & ĐTLX",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
+    link: "https://cdgl.edu.vn/khoa/trung-tam-tin-hoc-ngoai-ngu/",
+  },
 ];
 
 const khoaChuyenMon = [
-  { 
-    name: "Khoa Điện - Điện tử - Tin học", 
-    link: "https://cdgl.edu.vn/khoa/khoa-dien-dien-tu-tin-hoc/",
-    internalLink: "/nganh/dien-dien-tu-tin-hoc"
+  {
+    name: "Khoa Điện - Điện tử - Tin học",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+    link: "/nganh/dien-dien-tu-tin-hoc",
+    internal: true,
   },
-  { 
-    name: "Khoa Động lực - Máy nông nghiệp", 
-    link: "https://cdgl.edu.vn/khoa/khoa-dong-luc-may-nong-nghiep/",
-    internalLink: "/nganh/dong-luc-may-nong-nghiep"
+  {
+    name: "Khoa Động lực - Máy nông nghiệp",
+    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400&h=300&fit=crop",
+    link: "/nganh/dong-luc-may-nong-nghiep",
+    internal: true,
   },
-  { 
-    name: "Khoa Cơ khí - Xây dựng", 
-    link: "https://cdgl.edu.vn/khoa/khoa-co-khi-xay-dung/",
-    internalLink: "/nganh/co-khi-xay-dung"
+  {
+    name: "Khoa Cơ khí - Xây dựng",
+    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop",
+    link: "/nganh/co-khi-xay-dung",
+    internal: true,
   },
-  { 
-    name: "Khoa Văn hóa - Nghệ thuật", 
-    link: "https://cdgl.edu.vn/khoa/khoa-van-hoa-nghe-thuat/",
-    internalLink: "/nganh/van-hoa-nghe-thuat"
+  {
+    name: "Khoa Văn hóa - Nghệ thuật",
+    image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=300&fit=crop",
+    link: "/nganh/van-hoa-nghe-thuat",
+    internal: true,
   },
-  { 
-    name: "Khoa Nông Lâm", 
-    link: "https://cdgl.edu.vn/khoa/khoa-nong-lam/",
-    internalLink: "/nganh/nong-lam"
+  {
+    name: "Khoa Nông Lâm",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop",
+    link: "/nganh/nong-lam",
+    internal: true,
   },
-  { 
-    name: "Khoa Nghiệp vụ - Du lịch", 
-    link: "https://cdgl.edu.vn/khoa/khoa-nghiep-vu-du-lich/",
-    internalLink: "/nganh/nghiep-vu-du-lich"
+  {
+    name: "Khoa Nghiệp vụ - Du lịch",
+    image: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=400&h=300&fit=crop",
+    link: "/nganh/nghiep-vu-du-lich",
+    internal: true,
   },
-  { 
-    name: "Khoa Y - Dược", 
-    link: "https://cdgl.edu.vn/khoa/khoa-y-duoc/",
-    internalLink: "/nganh/y-duoc"
+  {
+    name: "Khoa Y - Dược",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop",
+    link: "/nganh/y-duoc",
+    internal: true,
   },
-  { 
-    name: "Khoa Cơ bản", 
-    link: "https://cdgl.edu.vn/khoa/khoa-co-ban/",
-    internalLink: "/nganh/co-ban"
+  {
+    name: "Khoa Cơ bản",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
+    link: "/nganh/co-ban",
+    internal: true,
   },
 ];
+
+interface SliderProps {
+  items: Array<{ name: string; image: string; link: string; internal?: boolean }>;
+  title: string;
+  icon: React.ReactNode;
+  accentColor: "primary" | "secondary";
+}
+
+function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 320;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const gradientClass = accentColor === "primary" 
+    ? "from-primary/80 via-primary/20" 
+    : "from-secondary/80 via-secondary/20";
+
+  const iconBgClass = accentColor === "primary" 
+    ? "bg-primary/10" 
+    : "bg-secondary/20";
+
+  const iconColorClass = accentColor === "primary" 
+    ? "text-primary" 
+    : "text-secondary";
+
+  return (
+    <div className="mb-12">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex items-end justify-between mb-6"
+      >
+        <div className="flex items-center gap-3">
+          <div className={`h-12 w-12 rounded-xl ${iconBgClass} flex items-center justify-center`}>
+            {icon}
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold text-foreground">
+            {title}
+          </h3>
+        </div>
+        
+        <div className="hidden md:flex gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            className="rounded-full"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            className="rounded-full"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
+      </motion.div>
+
+      {/* Slider */}
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {items.map((item, index) => {
+          const CardContent = (
+            <div className="relative overflow-hidden rounded-2xl shadow-card hover:shadow-elevated transition-all duration-300">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className={`absolute inset-0 bg-gradient-to-t ${gradientClass} to-transparent`} />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h4 className="text-primary-foreground font-semibold text-center group-hover:text-secondary transition-colors text-sm md:text-base">
+                  {item.name}
+                </h4>
+              </div>
+            </div>
+          );
+
+          return item.internal ? (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="group flex-shrink-0 w-[260px]"
+            >
+              <Link to={item.link}>
+                {CardContent}
+              </Link>
+            </motion.div>
+          ) : (
+            <motion.a
+              key={item.name}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="group flex-shrink-0 w-[260px]"
+            >
+              {CardContent}
+            </motion.a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export function DepartmentsSection() {
   return (
     <section className="py-16 bg-card">
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* Main Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
             Đơn vị trực thuộc
@@ -75,81 +259,21 @@ export function DepartmentsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Phòng - Trung tâm */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-background rounded-2xl p-6 shadow-card"
-          >
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
-              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Building2 className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">PHÒNG - TRUNG TÂM</h3>
-            </div>
-            <ul className="space-y-3">
-              {phongTrungTam.map((item, index) => (
-                <motion.li
-                  key={item.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-muted transition-colors group"
-                  >
-                    <ChevronRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
-                    <span className="text-foreground/80 group-hover:text-primary transition-colors">
-                      {item.name}
-                    </span>
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+        {/* Phòng - Trung tâm Slider */}
+        <DepartmentSlider
+          items={phongTrungTam}
+          title="PHÒNG - TRUNG TÂM"
+          icon={<Building2 className="h-6 w-6 text-primary" />}
+          accentColor="primary"
+        />
 
-          {/* Khoa chuyên môn */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-background rounded-2xl p-6 shadow-card"
-          >
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
-              <div className="h-12 w-12 rounded-xl bg-secondary/20 flex items-center justify-center">
-                <GraduationCap className="h-6 w-6 text-secondary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">KHOA CHUYÊN MÔN</h3>
-            </div>
-            <ul className="space-y-3">
-              {khoaChuyenMon.map((item, index) => (
-                <motion.li
-                  key={item.name}
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    to={item.internalLink}
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-muted transition-colors group"
-                  >
-                    <ChevronRight className="h-4 w-4 text-secondary group-hover:translate-x-1 transition-transform" />
-                    <span className="text-foreground/80 group-hover:text-secondary transition-colors">
-                      {item.name}
-                    </span>
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+        {/* Khoa chuyên môn Slider */}
+        <DepartmentSlider
+          items={khoaChuyenMon}
+          title="KHOA CHUYÊN MÔN"
+          icon={<GraduationCap className="h-6 w-6 text-secondary" />}
+          accentColor="secondary"
+        />
       </div>
     </section>
   );
