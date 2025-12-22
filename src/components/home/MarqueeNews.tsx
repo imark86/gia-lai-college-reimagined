@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Megaphone, Sparkles } from "lucide-react";
 
 const announcements = [
   {
@@ -20,24 +21,49 @@ const announcements = [
 
 export function MarqueeNews() {
   return (
-    <div className="bg-gradient-to-r from-primary via-primary/90 to-secondary/30 py-3 overflow-hidden">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {[...announcements, ...announcements].map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center mx-8 text-primary-foreground hover:text-secondary transition-colors"
-          >
-            <span className="text-sm font-medium">{item.title}</span>
-            {item.isNew && (
-              <span className="ml-2 text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full animate-pulse">
-                Mới
-              </span>
-            )}
-          </a>
-        ))}
+    <div className="relative bg-gradient-to-r from-primary via-primary/90 to-secondary overflow-hidden">
+      {/* Decorative ethnic pattern - Tây Nguyên inspired */}
+      <div className="absolute inset-0 opacity-10">
+        <svg className="w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
+          <pattern id="ethnic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M0 10 L5 0 L10 10 L5 20 Z" fill="currentColor" className="text-primary-foreground" />
+            <circle cx="15" cy="10" r="2" fill="currentColor" className="text-primary-foreground" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#ethnic-pattern)" />
+        </svg>
+      </div>
+
+      <div className="relative flex items-center">
+        {/* Label */}
+        <div className="hidden md:flex items-center gap-2 px-6 py-3 bg-secondary/30 backdrop-blur-sm border-r border-primary-foreground/20">
+          <Megaphone className="h-4 w-4 text-primary-foreground" />
+          <span className="text-sm font-semibold text-primary-foreground whitespace-nowrap">
+            Tin nổi bật
+          </span>
+        </div>
+
+        {/* Marquee */}
+        <div className="flex-1 py-3 overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[...announcements, ...announcements].map((item, index) => (
+              <a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center mx-8 text-primary-foreground hover:text-secondary-foreground transition-colors group"
+              >
+                <Sparkles className="h-4 w-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="text-sm font-medium">{item.title}</span>
+                {item.isNew && (
+                  <span className="ml-3 text-xs bg-accent text-accent-foreground px-2 py-0.5 rounded-full animate-pulse font-semibold">
+                    HOT
+                  </span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

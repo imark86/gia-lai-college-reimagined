@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MarqueeNews } from "@/components/home/MarqueeNews";
 import { HeroSection } from "@/components/home/HeroSection";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { ParallaxSection } from "@/components/home/ParallaxSection";
 import { DepartmentsSection } from "@/components/home/DepartmentsSection";
 import { NewsSection } from "@/components/home/NewsSection";
 import { GallerySection } from "@/components/home/GallerySection";
@@ -16,6 +17,7 @@ const Index = () => {
         <MarqueeNews />
         <HeroSection />
         <WhyUsSection />
+        <ParallaxSection />
         <DepartmentsSection />
         <NewsSection />
         <GallerySection />
