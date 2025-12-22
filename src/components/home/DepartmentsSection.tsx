@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Building2, GraduationCap } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2, GraduationCap, ExternalLink } from "lucide-react";
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -53,6 +53,7 @@ const khoaChuyenMon = [
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
     link: "/nganh/dien-dien-tu-tin-hoc",
     internal: true,
+    tag: "HOT",
   },
   {
     name: "Khoa Động lực - Máy nông nghiệp",
@@ -83,12 +84,14 @@ const khoaChuyenMon = [
     image: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=400&h=300&fit=crop",
     link: "/nganh/nghiep-vu-du-lich",
     internal: true,
+    tag: "NEW",
   },
   {
     name: "Khoa Y - Dược",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop",
     link: "/nganh/y-duoc",
     internal: true,
+    tag: "HOT",
   },
   {
     name: "Khoa Cơ bản",
@@ -99,20 +102,21 @@ const khoaChuyenMon = [
 ];
 
 interface SliderProps {
-  items: Array<{ name: string; image: string; link: string; internal?: boolean }>;
+  items: Array<{ name: string; image: string; link: string; internal?: boolean; tag?: string }>;
   title: string;
   icon: React.ReactNode;
-  accentColor: "primary" | "secondary";
+  gradientFrom: string;
+  gradientTo: string;
 }
 
-function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
+function DepartmentSlider({ items, title, icon, gradientFrom, gradientTo }: SliderProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 320;
+      const scrollAmount = 300;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -128,18 +132,6 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
     }
   };
 
-  const gradientClass = accentColor === "primary" 
-    ? "from-primary/80 via-primary/20" 
-    : "from-secondary/80 via-secondary/20";
-
-  const iconBgClass = accentColor === "primary" 
-    ? "bg-primary/10" 
-    : "bg-secondary/20";
-
-  const iconColorClass = accentColor === "primary" 
-    ? "text-primary" 
-    : "text-secondary";
-
   return (
     <div className="mb-12">
       {/* Header */}
@@ -147,13 +139,13 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex items-end justify-between mb-6"
+        className="flex items-center justify-between mb-6"
       >
         <div className="flex items-center gap-3">
-          <div className={`h-12 w-12 rounded-xl ${iconBgClass} flex items-center justify-center`}>
+          <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center shadow-lg`}>
             {icon}
           </div>
-          <h3 className="text-xl md:text-2xl font-bold text-foreground">
+          <h3 className="text-xl md:text-2xl font-bold text-foreground font-display">
             {title}
           </h3>
         </div>
@@ -164,7 +156,7 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
             size="icon"
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className="rounded-full"
+            className="rounded-xl glass border-border/50 hover:bg-primary/10 disabled:opacity-30"
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
@@ -173,7 +165,7 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
             size="icon"
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className="rounded-full"
+            className="rounded-xl glass border-border/50 hover:bg-primary/10 disabled:opacity-30"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -184,23 +176,33 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
       >
         {items.map((item, index) => {
           const CardContent = (
-            <div className="relative overflow-hidden rounded-2xl shadow-card hover:shadow-elevated transition-all duration-300">
+            <div className="relative overflow-hidden rounded-2xl glass border border-border/30 hover:border-primary/50 transition-all duration-300 group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
               </div>
-              <div className={`absolute inset-0 bg-gradient-to-t ${gradientClass} to-transparent`} />
+              
+              {/* Tag */}
+              {item.tag && (
+                <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${
+                  item.tag === 'HOT' ? 'bg-accent text-accent-foreground' : 'bg-secondary text-secondary-foreground'
+                }`}>
+                  {item.tag}
+                </div>
+              )}
+              
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h4 className="text-primary-foreground font-semibold text-center group-hover:text-secondary transition-colors text-sm md:text-base">
+                <h4 className="text-foreground font-semibold text-sm md:text-base group-hover:text-primary transition-colors flex items-center gap-2">
                   {item.name}
+                  <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </h4>
               </div>
             </div>
@@ -213,7 +215,7 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group flex-shrink-0 w-[260px]"
+              className="group flex-shrink-0 w-[260px] hover-lift cursor-pointer"
             >
               <Link to={item.link}>
                 {CardContent}
@@ -229,7 +231,7 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group flex-shrink-0 w-[260px]"
+              className="group flex-shrink-0 w-[260px] hover-lift"
             >
               {CardContent}
             </motion.a>
@@ -242,37 +244,44 @@ function DepartmentSlider({ items, title, icon, accentColor }: SliderProps) {
 
 export function DepartmentsSection() {
   return (
-    <section className="py-16 bg-card">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Main Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 glass rounded-full text-sm font-medium text-primary mb-4">
             Đơn vị trực thuộc
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Các Khoa & Phòng ban
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display">
+            <span className="text-foreground">Khám Phá </span>
+            <span className="text-gradient">Các Khoa & Phòng Ban</span>
           </h2>
         </motion.div>
 
         {/* Phòng - Trung tâm Slider */}
         <DepartmentSlider
           items={phongTrungTam}
-          title="PHÒNG - TRUNG TÂM"
-          icon={<Building2 className="h-6 w-6 text-primary" />}
-          accentColor="primary"
+          title="Phòng - Trung Tâm"
+          icon={<Building2 className="h-6 w-6 text-primary-foreground" />}
+          gradientFrom="from-primary"
+          gradientTo="to-accent"
         />
 
         {/* Khoa chuyên môn Slider */}
         <DepartmentSlider
           items={khoaChuyenMon}
-          title="KHOA CHUYÊN MÔN"
-          icon={<GraduationCap className="h-6 w-6 text-secondary" />}
-          accentColor="secondary"
+          title="Khoa Chuyên Môn"
+          icon={<GraduationCap className="h-6 w-6 text-primary-foreground" />}
+          gradientFrom="from-secondary"
+          gradientTo="to-primary"
         />
       </div>
     </section>
