@@ -1,12 +1,55 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { MapPin, Users, Award, Calendar } from "lucide-react";
 
+interface CountUpProps {
+  end: number;
+  suffix?: string;
+  duration?: number;
+}
+
+function CountUpNumber({ end, suffix = "", duration = 2000 }: CountUpProps) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let startTime: number;
+          const animate = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            setCount(Math.floor(end * easeOutQuart));
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 const highlights = [
-  { icon: Calendar, value: "1992", label: "Năm thành lập" },
-  { icon: Users, value: "15,000+", label: "Sinh viên đã đào tạo" },
-  { icon: Award, value: "12", label: "Ngành đào tạo" },
-  { icon: MapPin, value: "4", label: "Cơ sở đào tạo" },
+  { icon: Calendar, value: 1992, label: "Năm thành lập", suffix: "" },
+  { icon: Users, value: 15000, label: "Sinh viên đã đào tạo", suffix: "+" },
+  { icon: Award, value: 12, label: "Ngành đào tạo", suffix: "" },
+  { icon: MapPin, value: 4, label: "Cơ sở đào tạo", suffix: "" },
 ];
 
 export function ParallaxSection() {
@@ -22,35 +65,72 @@ export function ParallaxSection() {
 
   return (
     <section ref={ref} className="relative h-[80vh] min-h-[600px] overflow-hidden">
-      {/* Parallax Background Image */}
+      {/* Parallax Background Image - Using image from CDGL website */}
       <motion.div 
         style={{ y }}
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
       >
         <img
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&h=1080&fit=crop"
-          alt="Gia Lai Highland"
+          src="https://cdgl.edu.vn/wp-content/uploads/2024/03/toan-canh-truong-1.jpg"
+          alt="Trường Cao đẳng Gia Lai toàn cảnh"
           className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&h=1080&fit=crop";
+          }}
         />
       </motion.div>
 
       {/* Overlay with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />
       
-      {/* Ethnic pattern overlay */}
+      {/* Ethnic pattern overlay - Tây Nguyên inspired */}
       <div className="absolute inset-0 opacity-10">
         <svg width="100%" height="100%" className="text-primary-foreground">
           <pattern id="parallax-ethnic" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-            {/* Tây Nguyên inspired geometric patterns */}
+            {/* Tây Nguyên inspired geometric patterns - Cồng chiêng và nhà rông */}
             <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="currentColor" strokeWidth="1" />
             <path d="M40 15 L65 40 L40 65 L15 40 Z" fill="none" stroke="currentColor" strokeWidth="1" />
             <circle cx="40" cy="40" r="8" fill="currentColor" />
             {/* Drum pattern inspired */}
             <circle cx="40" cy="40" r="3" fill="none" stroke="currentColor" strokeWidth="1" />
+            {/* Additional ethnic elements */}
+            <line x1="20" y1="20" x2="25" y2="25" stroke="currentColor" strokeWidth="1" />
+            <line x1="55" y1="55" x2="60" y2="60" stroke="currentColor" strokeWidth="1" />
+            <line x1="55" y1="20" x2="60" y2="25" stroke="currentColor" strokeWidth="1" />
+            <line x1="20" y1="55" x2="25" y2="60" stroke="currentColor" strokeWidth="1" />
           </pattern>
           <rect width="100%" height="100%" fill="url(#parallax-ethnic)" />
         </svg>
       </div>
+
+      {/* Floating decorative images */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        className="absolute top-20 left-10 w-24 h-24 rounded-full overflow-hidden border-2 border-secondary/30 hidden lg:block"
+        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
+      >
+        <img
+          src="https://cdgl.edu.vn/wp-content/uploads/2024/03/sinh-vien-1.jpg"
+          alt="Sinh viên"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        className="absolute bottom-32 right-16 w-32 h-32 rounded-full overflow-hidden border-2 border-primary/30 hidden lg:block"
+        style={{ y: useTransform(scrollYProgress, [0, 1], [50, -50]) }}
+      >
+        <img
+          src="https://cdgl.edu.vn/wp-content/uploads/2024/03/hoat-dong-1.jpg"
+          alt="Hoạt động"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center">
@@ -100,7 +180,7 @@ export function ParallaxSection() {
             với tinh thần cống hiến, kiến thức vững vàng và kỹ năng thực tế
           </motion.p>
 
-          {/* Stats */}
+          {/* Stats with animated counting */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +199,11 @@ export function ParallaxSection() {
               >
                 <item.icon className="h-8 w-8 text-secondary mx-auto mb-3 group-hover:scale-110 transition-transform" />
                 <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-1">
-                  {item.value}
+                  <CountUpNumber 
+                    end={item.value} 
+                    suffix={item.suffix} 
+                    duration={2500} 
+                  />
                 </div>
                 <div className="text-sm text-primary-foreground/70">{item.label}</div>
               </motion.div>

@@ -1,5 +1,49 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Briefcase, GraduationCap, Users, Building, Trophy, Star } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+
+interface CountUpProps {
+  end: number;
+  suffix?: string;
+  duration?: number;
+}
+
+function CountUpNumber({ end, suffix = "", duration = 2000 }: CountUpProps) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let startTime: number;
+          const animate = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            setCount(Math.floor(end * easeOutQuart));
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 const features = [
   {
@@ -41,10 +85,10 @@ const features = [
 ];
 
 const stats = [
-  { value: "30+", label: "Năm kinh nghiệm" },
-  { value: "10K+", label: "Sinh viên tốt nghiệp" },
-  { value: "98%", label: "Có việc làm" },
-  { value: "50+", label: "Doanh nghiệp đối tác" },
+  { value: 30, label: "Năm kinh nghiệm", suffix: "+" },
+  { value: 10, label: "Nghìn SV tốt nghiệp", suffix: "K+" },
+  { value: 98, label: "Có việc làm", suffix: "%" },
+  { value: 50, label: "Doanh nghiệp đối tác", suffix: "+" },
 ];
 
 export function WhyUsSection() {
@@ -63,6 +107,35 @@ export function WhyUsSection() {
           <rect width="100%" height="100%" fill="url(#ethnic-bg)" />
         </svg>
       </div>
+
+      {/* Floating decorative images from CDGL */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.2 }}
+        viewport={{ once: true }}
+        className="absolute top-20 right-10 w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20 hidden xl:block"
+      >
+        <img
+          src="https://cdgl.edu.vn/wp-content/uploads/2024/03/hoc-tap-1.jpg"
+          alt="Học tập"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.15 }}
+        viewport={{ once: true }}
+        className="absolute bottom-40 left-10 w-32 h-32 rounded-full overflow-hidden border-4 border-secondary/20 hidden xl:block"
+      >
+        <img
+          src="https://cdgl.edu.vn/wp-content/uploads/2024/03/thuc-hanh-1.jpg"
+          alt="Thực hành"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -93,7 +166,7 @@ export function WhyUsSection() {
               của hàng nghìn sinh viên và doanh nghiệp trong khu vực Tây Nguyên.
             </p>
 
-            {/* Stats grid */}
+            {/* Stats grid with animated counting */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {stats.map((stat, index) => (
                 <motion.div
@@ -104,7 +177,9 @@ export function WhyUsSection() {
                   transition={{ delay: index * 0.1 }}
                   className="text-center p-4 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-border/50"
                 >
-                  <div className="text-3xl font-bold text-gradient mb-1">{stat.value}</div>
+                  <div className="text-3xl font-bold text-gradient mb-1">
+                    <CountUpNumber end={stat.value} suffix={stat.suffix} duration={2000} />
+                  </div>
                   <div className="text-xs text-muted-foreground font-medium">{stat.label}</div>
                 </motion.div>
               ))}
