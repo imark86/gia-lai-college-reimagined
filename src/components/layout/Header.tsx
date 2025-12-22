@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone, Mail, ChevronDown, Search } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -109,13 +109,13 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Glass navbar */}
-      <nav className="glass-strong border-b border-border/30">
+      <nav className="bg-card/95 backdrop-blur-xl border-b border-border/50 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex h-16 md:h-20 items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-xl bg-gradient-primary flex items-center justify-center overflow-hidden shadow-glow">
-                <span className="text-primary-foreground font-bold text-lg md:text-xl font-display">GL</span>
+                <span className="text-white font-bold text-lg md:text-xl font-display">GL</span>
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-sm md:text-base font-bold text-foreground leading-tight font-display">CAO ĐẲNG</h1>
@@ -135,7 +135,7 @@ export function Header() {
                   {item.internal ? (
                     <Link
                       to={item.href}
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/10"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
                     >
                       {item.label}
                       {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
@@ -145,7 +145,7 @@ export function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/10"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
                     >
                       {item.label}
                       {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
@@ -160,12 +160,12 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-[580px] rounded-2xl glass-strong shadow-elevated overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-[580px] rounded-2xl bg-card shadow-elevated border border-border/50 overflow-hidden"
                       >
-                        <div className="grid grid-cols-2 divide-x divide-border/30">
+                        <div className="grid grid-cols-2 divide-x divide-border/50">
                           {item.columns?.map((column) => (
                             <div key={column.title} className="p-4">
-                              <h4 className="font-bold text-xs text-primary mb-3 pb-2 border-b border-border/30 uppercase tracking-wider">
+                              <h4 className="font-bold text-xs text-primary mb-3 pb-2 border-b border-border/50 uppercase tracking-wider">
                                 {column.title}
                               </h4>
                               <ul className="space-y-1">
@@ -190,7 +190,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-56 rounded-2xl glass-strong shadow-elevated overflow-hidden p-2"
+                        className="absolute top-full left-0 mt-2 w-56 rounded-2xl bg-card shadow-elevated border border-border/50 overflow-hidden p-2"
                       >
                         {item.children.map((child) => (
                           <a
@@ -212,13 +212,13 @@ export function Header() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              <a href="tel:02693825001" className="hidden md:flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors">
+              <a href="tel:02693825001" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4" />
                 <span>02693.825001</span>
               </a>
               <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
                 <Button
-                  className="hidden md:flex bg-gradient-primary text-primary-foreground hover:opacity-90 rounded-xl font-medium"
+                  className="hidden md:flex bg-gradient-primary text-white hover:opacity-90 rounded-xl font-medium shadow-glow"
                 >
                   Đăng ký ngay
                 </Button>
@@ -242,7 +242,7 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-border/30"
+              className="lg:hidden border-t border-border/50 bg-card"
             >
               <div className="container mx-auto px-4 py-4 space-y-2">
                 {navItems.map((item) => (
@@ -250,7 +250,7 @@ export function Header() {
                     <Link
                       key={item.label}
                       to={item.href}
-                      className="block px-4 py-3 text-foreground hover:bg-primary/10 rounded-xl transition-colors"
+                      className="block px-4 py-3 text-foreground hover:bg-primary/5 rounded-xl transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -261,14 +261,14 @@ export function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-3 text-foreground hover:bg-primary/10 rounded-xl transition-colors"
+                      className="block px-4 py-3 text-foreground hover:bg-primary/5 rounded-xl transition-colors"
                     >
                       {item.label}
                     </a>
                   )
                 ))}
                 <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full mt-4 bg-gradient-primary text-primary-foreground hover:opacity-90 rounded-xl">
+                  <Button className="w-full mt-4 bg-gradient-primary text-white hover:opacity-90 rounded-xl">
                     Đăng ký tuyển sinh
                   </Button>
                 </a>
