@@ -1,11 +1,10 @@
 import { Phone, Mail, MapPin, Facebook, Youtube, Globe } from "lucide-react";
 
 const trainingLocations = [
-  "Cơ sở 1: 126 Lê Thánh Tôn, TP. Pleiku",
-  "Cơ sở 2: 17 Quang Trung, TP. Pleiku", 
-  "Cơ sở 3: Tổ 7, Thống Nhất, TP. Pleiku",
-  "Cơ sở 4: Huyện Chư Sê, Gia Lai",
-  "Cơ sở 5: Huyện An Khê, Gia Lai",
+  "Cách Mạng Tháng 8, P. Pleiku, Gia Lai",
+  "140 Nguyễn Chí Thanh, P. Hội Phú, Gia Lai",
+  "282 Hoàng Hoa Thám, P. An Khê, Gia Lai",
+  "69 Nguyễn Huệ, P. Ayun Pa, Gia Lai",
 ];
 
 const quickLinks = [
@@ -22,7 +21,7 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About */}
+          {/* About & Trụ sở chính */}
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-12 w-12 rounded-full bg-primary-foreground/10 flex items-center justify-center">
@@ -33,17 +32,24 @@ export function Footer() {
                 <p className="text-sm text-secondary">GIA LAI</p>
               </div>
             </div>
-            <p className="text-sm text-primary-foreground/80 leading-relaxed mb-4">
-              Trường Cao đẳng Gia Lai - Cơ sở giáo dục nghề nghiệp công lập đào tạo nguồn nhân lực chất lượng cao cho tỉnh Gia Lai và khu vực Tây Nguyên.
-            </p>
-            <p className="text-xs text-primary-foreground/60 italic">
+            <div className="space-y-3 text-sm">
+              <div>
+                <p className="font-semibold text-secondary mb-1">Trụ sở chính:</p>
+                <p className="text-primary-foreground/80">Đường Trần Nhật Duật - P. Diên Hồng - Tỉnh Gia Lai</p>
+              </div>
+              <div>
+                <p className="font-semibold text-secondary mb-1">Địa chỉ liên hệ:</p>
+                <p className="text-primary-foreground/80">Khu Đô Thị Diên Phú - Diên Hồng - Tỉnh Gia Lai</p>
+              </div>
+            </div>
+            <p className="text-xs text-primary-foreground/60 italic mt-4">
               Vững nghề nghiệp - Sáng tương lai
             </p>
           </div>
 
           {/* Địa điểm đào tạo */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-secondary">5 Địa điểm đào tạo</h4>
+            <h4 className="font-semibold text-lg mb-4 text-secondary">4 Địa điểm đào tạo</h4>
             <ul className="space-y-2 text-sm">
               {trainingLocations.map((location, index) => (
                 <li key={index} className="flex items-start gap-2">
@@ -61,11 +67,15 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-secondary" />
                 <div>
-                  <a href="tel:02696296999" className="text-primary-foreground/80 hover:text-secondary transition-colors font-medium">
-                    0269 629 6999
+                  <a href="tel:02693825001" className="text-primary-foreground/80 hover:text-secondary transition-colors font-medium">
+                    02693.825001
                   </a>
-                  <p className="text-xs text-primary-foreground/60">Tư vấn tuyển sinh</p>
+                  <p className="text-xs text-primary-foreground/60">Điện thoại chính</p>
                 </div>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="h-5 w-5 text-secondary text-center">Fax</span>
+                <span className="text-primary-foreground/80">02693.867739</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-secondary" />
@@ -97,7 +107,7 @@ export function Footer() {
             <h4 className="font-semibold text-lg mb-4 text-secondary">Kết nối với chúng tôi</h4>
             <div className="flex gap-3 mb-6">
               <a
-                href="https://www.facebook.com/truongcaodanggialai"
+                href="https://www.fb.com/truongcaodanggialai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"

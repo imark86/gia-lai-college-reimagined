@@ -48,7 +48,7 @@ export function CTASection() {
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-base px-8"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                0269 629 6999
+                02693.825001
               </Button>
             </a>
           </div>
