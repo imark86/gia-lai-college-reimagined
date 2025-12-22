@@ -2,9 +2,32 @@ import { useState } from "react";
 import { Menu, X, Phone, Mail, ChevronDown, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+
+const phongTrungTam = [
+  { label: "Phòng Tổ chức - Hành chính", href: "https://cdgl.edu.vn/khoa/phong-to-chuc-hanh-chinh/" },
+  { label: "Phòng Đào tạo - NCKH & HTQT", href: "https://cdgl.edu.vn/khoa/phong-dao-tao-nckhhtqt/" },
+  { label: "Phòng Kế hoạch - Tài chính", href: "https://cdgl.edu.vn/khoa/phong-ke-hoach-tai-chinh/" },
+  { label: "Phòng Quản trị - Vật tư thiết bị", href: "https://cdgl.edu.vn/khoa/phong-quan-tri-vat-tu-thiet-bi/" },
+  { label: "Phòng Công tác HSSV", href: "https://cdgl.edu.vn/khoa/phong-cong-tac-hssv/" },
+  { label: "Phòng Đảm bảo chất lượng", href: "https://cdgl.edu.vn/khoa/phong-dam-bao-chat-luong/" },
+  { label: "TT Tuyển sinh & hỗ trợ HSSV", href: "https://cdgl.edu.vn/khoa/trung-tam-tuyen-sinh/" },
+  { label: "TT Tin học - Ngoại ngữ & ĐTLX", href: "https://cdgl.edu.vn/khoa/trung-tam-tin-hoc-ngoai-ngu/" },
+];
+
+const khoaChuyenMon = [
+  { label: "Khoa Điện - Điện tử - Tin học", href: "/nganh/dien-dien-tu-tin-hoc", internal: true },
+  { label: "Khoa Động lực - Máy nông nghiệp", href: "/nganh/dong-luc-may-nong-nghiep", internal: true },
+  { label: "Khoa Cơ khí - Xây dựng", href: "/nganh/co-khi-xay-dung", internal: true },
+  { label: "Khoa Văn hóa - Nghệ thuật", href: "/nganh/van-hoa-nghe-thuat", internal: true },
+  { label: "Khoa Nông Lâm", href: "/nganh/nong-lam", internal: true },
+  { label: "Khoa Nghiệp vụ - Du lịch", href: "/nganh/nghiep-vu-du-lich", internal: true },
+  { label: "Khoa Y - Dược", href: "/nganh/y-duoc", internal: true },
+  { label: "Khoa Cơ bản", href: "/nganh/co-ban", internal: true },
+];
 
 const navItems = [
-  { label: "Trang chủ", href: "https://cdgl.edu.vn/" },
+  { label: "Trang chủ", href: "/", internal: true },
   {
     label: "Giới thiệu",
     href: "https://cdgl.edu.vn/block_categories/gioi-thieu/",
@@ -20,12 +43,10 @@ const navItems = [
   {
     label: "Các đơn vị",
     href: "https://cdgl.edu.vn/block_categories/cac-don-vi/",
-    children: [
-      { label: "Phòng Tổ chức - Hành chính", href: "https://cdgl.edu.vn/khoa/phong-to-chuc-hanh-chinh/" },
-      { label: "Phòng Đào tạo - NCKH & HTQT", href: "https://cdgl.edu.vn/khoa/phong-dao-tao-nckhhtqt/" },
-      { label: "Khoa Điện - Điện tử - Tin học", href: "https://cdgl.edu.vn/khoa/khoa-dien-dien-tu-tin-hoc/" },
-      { label: "Khoa Y - Dược", href: "https://cdgl.edu.vn/khoa/khoa-y-duoc/" },
-      { label: "Khoa Văn hóa - Nghệ thuật", href: "https://cdgl.edu.vn/khoa/khoa-van-hoa-nghe-thuat/" },
+    hasTwoColumns: true,
+    columns: [
+      { title: "PHÒNG - TRUNG TÂM", items: phongTrungTam },
+      { title: "KHOA CHUYÊN MÔN", items: khoaChuyenMon },
     ],
   },
   {
@@ -62,15 +83,38 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  const renderNavLink = (item: { label: string; href: string; internal?: boolean }) => {
+    if (item.internal) {
+      return (
+        <Link
+          to={item.href}
+          className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+        >
+          {item.label}
+        </Link>
+      );
+    }
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+      >
+        {item.label}
+      </a>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground">
         <div className="container mx-auto flex items-center justify-between px-4 py-2 text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:02696296999" className="flex items-center gap-2 hover:text-secondary transition-colors">
+            <a href="tel:02693825001" className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Phone className="h-4 w-4" />
-              <span className="hidden sm:inline">0269 629 6999</span>
+              <span className="hidden sm:inline">02693.825001</span>
             </a>
             <a href="mailto:info@cdgl.edu.vn" className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Mail className="h-4 w-4" />
@@ -78,7 +122,7 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-primary-foreground/80">Tư vấn tuyển sinh: 0269 629 6999</span>
+            <span className="hidden md:inline text-primary-foreground/80">Tư vấn tuyển sinh: 02693.825001</span>
           </div>
         </div>
       </div>
@@ -88,7 +132,7 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="relative h-14 w-14 rounded-full bg-primary flex items-center justify-center overflow-hidden">
                 <span className="text-primary-foreground font-bold text-xl">GL</span>
               </div>
@@ -96,7 +140,7 @@ export function Header() {
                 <h1 className="text-lg font-bold text-primary leading-tight">TRƯỜNG CAO ĐẲNG</h1>
                 <p className="text-sm font-semibold text-secondary">GIA LAI</p>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
@@ -107,17 +151,59 @@ export function Header() {
                   onMouseEnter={() => setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <a
-                    href={item.href}
-                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
-                  >
-                    {item.label}
-                    {item.children && <ChevronDown className="h-4 w-4" />}
-                  </a>
+                  {item.internal ? (
+                    <Link
+                      to={item.href}
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                    >
+                      {item.label}
+                      {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                    >
+                      {item.label}
+                      {(item.children || item.hasTwoColumns) && <ChevronDown className="h-4 w-4" />}
+                    </a>
+                  )}
 
-                  {/* Dropdown */}
+                  {/* Two Column Dropdown for "Các đơn vị" */}
                   <AnimatePresence>
-                    {item.children && activeDropdown === item.label && (
+                    {item.hasTwoColumns && activeDropdown === item.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-1 w-[600px] rounded-lg bg-card shadow-elevated border border-border overflow-hidden"
+                      >
+                        <div className="grid grid-cols-2 divide-x divide-border">
+                          {item.columns?.map((column) => (
+                            <div key={column.title} className="p-4">
+                              <h4 className="font-bold text-sm text-primary mb-3 pb-2 border-b border-border">
+                                {column.title}
+                              </h4>
+                              <ul className="space-y-1">
+                                {column.items.map((subItem) => (
+                                  <li key={subItem.label}>
+                                    {renderNavLink(subItem)}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Single Column Dropdown */}
+                  <AnimatePresence>
+                    {item.children && !item.hasTwoColumns && activeDropdown === item.label && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -129,6 +215,8 @@ export function Header() {
                           <a
                             key={child.label}
                             href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="block px-4 py-3 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
                           >
                             {child.label}
@@ -177,17 +265,32 @@ export function Header() {
             >
               <div className="container mx-auto px-4 py-4 space-y-2">
                 {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="block px-4 py-3 text-foreground hover:bg-muted rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </a>
+                  item.internal ? (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block px-4 py-3 text-foreground hover:bg-muted rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-3 text-foreground hover:bg-muted rounded-md transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  )
                 ))}
-                <Button className="w-full mt-4 bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                  Đăng ký tuyển sinh
-                </Button>
+                <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
+                  <Button className="w-full mt-4 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                    Đăng ký tuyển sinh
+                  </Button>
+                </a>
               </div>
             </motion.div>
           )}
