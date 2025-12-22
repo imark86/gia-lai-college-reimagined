@@ -156,7 +156,7 @@ function DepartmentSlider({ items, title, icon, gradientFrom, gradientTo }: Slid
             size="icon"
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className="rounded-xl glass border-border/50 hover:bg-primary/10 disabled:opacity-30"
+            className="rounded-xl border-border/50 hover:bg-primary/10 hover:border-primary disabled:opacity-30"
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
@@ -165,7 +165,7 @@ function DepartmentSlider({ items, title, icon, gradientFrom, gradientTo }: Slid
             size="icon"
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className="rounded-xl glass border-border/50 hover:bg-primary/10 disabled:opacity-30"
+            className="rounded-xl border-border/50 hover:bg-primary/10 hover:border-primary disabled:opacity-30"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -180,27 +180,29 @@ function DepartmentSlider({ items, title, icon, gradientFrom, gradientTo }: Slid
       >
         {items.map((item, index) => {
           const CardContent = (
-            <div className="relative overflow-hidden rounded-2xl glass border border-border/30 hover:border-primary/50 transition-all duration-300 group">
+            <div className="relative overflow-hidden rounded-2xl bg-card shadow-card hover:shadow-elevated border border-border/50 transition-all duration-300 group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
               </div>
               
               {/* Tag */}
               {item.tag && (
                 <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${
-                  item.tag === 'HOT' ? 'bg-accent text-accent-foreground' : 'bg-secondary text-secondary-foreground'
+                  item.tag === 'HOT' 
+                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white' 
+                    : 'bg-gradient-to-r from-primary to-secondary text-white'
                 }`}>
                   {item.tag}
                 </div>
               )}
               
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h4 className="text-foreground font-semibold text-sm md:text-base group-hover:text-primary transition-colors flex items-center gap-2">
+                <h4 className="text-white font-semibold text-sm md:text-base group-hover:text-yellow-300 transition-colors flex items-center gap-2">
                   {item.name}
                   <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </h4>
@@ -257,12 +259,11 @@ export function DepartmentsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 glass rounded-full text-sm font-medium text-primary mb-4">
+          <span className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary mb-4">
             Đơn vị trực thuộc
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display">
-            <span className="text-foreground">Khám Phá </span>
-            <span className="text-gradient">Các Khoa & Phòng Ban</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-foreground">
+            Khám Phá <span className="text-gradient">Các Khoa & Phòng Ban</span>
           </h2>
         </motion.div>
 
@@ -270,18 +271,18 @@ export function DepartmentsSection() {
         <DepartmentSlider
           items={phongTrungTam}
           title="Phòng - Trung Tâm"
-          icon={<Building2 className="h-6 w-6 text-primary-foreground" />}
+          icon={<Building2 className="h-6 w-6 text-white" />}
           gradientFrom="from-primary"
-          gradientTo="to-accent"
+          gradientTo="to-blue-400"
         />
 
         {/* Khoa chuyên môn Slider */}
         <DepartmentSlider
           items={khoaChuyenMon}
           title="Khoa Chuyên Môn"
-          icon={<GraduationCap className="h-6 w-6 text-primary-foreground" />}
+          icon={<GraduationCap className="h-6 w-6 text-white" />}
           gradientFrom="from-secondary"
-          gradientTo="to-primary"
+          gradientTo="to-teal-400"
         />
       </div>
     </section>
