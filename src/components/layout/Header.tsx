@@ -4,31 +4,58 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "Trang chủ", href: "/" },
+  { label: "Trang chủ", href: "https://cdgl.edu.vn/" },
   {
     label: "Giới thiệu",
-    href: "#",
+    href: "https://cdgl.edu.vn/block_categories/gioi-thieu/",
     children: [
-      { label: "Lịch sử phát triển", href: "#" },
-      { label: "Sứ mệnh & Tầm nhìn", href: "#" },
-      { label: "Cơ cấu tổ chức", href: "#" },
-      { label: "Ban giám hiệu", href: "#" },
+      { label: "Tổng quan", href: "https://cdgl.edu.vn/khoa/tong-quan/" },
+      { label: "Sơ đồ tổ chức", href: "https://cdgl.edu.vn/khoa/so-do-to-chuc/" },
+      { label: "Đảng bộ Cơ sở", href: "https://cdgl.edu.vn/khoa/dang-bo-co-so/" },
+      { label: "Ban giám hiệu", href: "https://cdgl.edu.vn/khoa/ban-giam-hieu/" },
+      { label: "Công đoàn", href: "https://cdgl.edu.vn/category/co-cau-to-chuc/cong-doan/" },
+      { label: "Đoàn thanh niên", href: "https://cdgl.edu.vn/category/co-cau-to-chuc/doan-thanh-nien/" },
     ],
   },
   {
-    label: "Đào tạo",
-    href: "#",
+    label: "Các đơn vị",
+    href: "https://cdgl.edu.vn/block_categories/cac-don-vi/",
     children: [
-      { label: "Cao đẳng chính quy", href: "#" },
-      { label: "Trung cấp", href: "#" },
-      { label: "Đào tạo ngắn hạn", href: "#" },
-      { label: "Liên kết đào tạo", href: "#" },
+      { label: "Phòng Tổ chức - Hành chính", href: "https://cdgl.edu.vn/khoa/phong-to-chuc-hanh-chinh/" },
+      { label: "Phòng Đào tạo - NCKH & HTQT", href: "https://cdgl.edu.vn/khoa/phong-dao-tao-nckhhtqt/" },
+      { label: "Khoa Điện - Điện tử - Tin học", href: "https://cdgl.edu.vn/khoa/khoa-dien-dien-tu-tin-hoc/" },
+      { label: "Khoa Y - Dược", href: "https://cdgl.edu.vn/khoa/khoa-y-duoc/" },
+      { label: "Khoa Văn hóa - Nghệ thuật", href: "https://cdgl.edu.vn/khoa/khoa-van-hoa-nghe-thuat/" },
     ],
   },
-  { label: "Tuyển sinh", href: "#" },
-  { label: "Sinh viên", href: "#" },
-  { label: "Tin tức", href: "#" },
-  { label: "Liên hệ", href: "#" },
+  {
+    label: "Tuyển sinh",
+    href: "https://cdgl.edu.vn/category/tuyen-sinh/",
+    children: [
+      { label: "Đăng ký trực tuyến", href: "https://cdgl.edu.vn/dang-ky-truc-tuyen/" },
+      { label: "Cẩm nang hướng nghiệp", href: "https://cdgl.edu.vn/?post_type=blocks&p=2054&preview=true#flipbook-df_2005/1/" },
+      { label: "Video tuyển sinh", href: "https://cdgl.edu.vn/category/tuyen-sinh/video-tuyen-sinh/" },
+    ],
+  },
+  {
+    label: "Văn bản",
+    href: "https://cdgl.edu.vn/category/van-ban-bieu-mau/",
+    children: [
+      { label: "Biểu mẫu", href: "https://cdgl.edu.vn/category/van-ban-bieu-mau/bieu-mau/" },
+      { label: "Quy chế & Quy định", href: "https://cdgl.edu.vn/category/van-ban-bieu-mau/quy-che-quy-dinh-quan-ly/" },
+      { label: "Văn bản pháp quy", href: "https://cdgl.edu.vn/category/van-ban-bieu-mau/van-ban-phap-quy/" },
+      { label: "Kiểm định", href: "https://cdgl.edu.vn/kiem-dinh/" },
+    ],
+  },
+  {
+    label: "Việc làm",
+    href: "https://cdgl.edu.vn/category/tuyen-dung-viec-lam/",
+    children: [
+      { label: "Tuyển dụng viên chức", href: "https://cdgl.edu.vn/category/tuyen-dung-viec-lam/tuyen-dung-vien-chuc/" },
+      { label: "Ngân hàng việc làm", href: "https://cdgl.edu.vn/tong-hop-thong-tin-viec-lam/" },
+    ],
+  },
+  { label: "Thư viện", href: "https://cdgl.edu.vn/category/thu-vien-dien-tu/" },
 ];
 
 export function Header() {
@@ -41,9 +68,9 @@ export function Header() {
       <div className="bg-primary text-primary-foreground">
         <div className="container mx-auto flex items-center justify-between px-4 py-2 text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:02693825001" className="flex items-center gap-2 hover:text-secondary transition-colors">
+            <a href="tel:02696296999" className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Phone className="h-4 w-4" />
-              <span className="hidden sm:inline">02693 825 001</span>
+              <span className="hidden sm:inline">0269 629 6999</span>
             </a>
             <a href="mailto:info@cdgl.edu.vn" className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Mail className="h-4 w-4" />
@@ -51,7 +78,7 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-primary-foreground/80">Đường dây nóng: 02693 825 001</span>
+            <span className="hidden md:inline text-primary-foreground/80">Tư vấn tuyển sinh: 0269 629 6999</span>
           </div>
         </div>
       </div>
@@ -119,12 +146,14 @@ export function Header() {
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                 <Search className="h-5 w-5" />
               </Button>
-              <Button
-                variant="default"
-                className="hidden md:flex bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              >
-                Đăng ký tuyển sinh
-              </Button>
+              <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="default"
+                  className="hidden md:flex bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                >
+                  Đăng ký tuyển sinh
+                </Button>
+              </a>
               <Button
                 variant="ghost"
                 size="icon"

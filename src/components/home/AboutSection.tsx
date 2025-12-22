@@ -53,23 +53,25 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Trường Cao đẳng Gia Lai thành lập theo Quyết định số 627/QĐ – LĐTBXH ngày 05 tháng 6 năm 2020 
-                của Bộ trưởng Bộ Lao động – Thương binh và Xã hội về việc sáp nhập trường Trung cấp Y tế Gia Lai, 
-                Trường Trung cấp văn hóa – Nghệ thuật Gia Lai, Trường Trung cấp Kinh tế – Kỹ thuật Nam Gia Lai, 
-                Trường Trung cấp Kinh tế – Kỹ thuật Đông Gia Lai vào Trường Cao đẳng nghề Gia Lai.
+                Trường Cao đẳng Gia Lai thành lập theo Quyết định số 627/QĐ – LĐTBXH ngày 05 tháng 6 năm 2020, 
+                trên cơ sở sáp nhập Trường Trung cấp Y tế Gia Lai, Trường Trung cấp Văn hóa – Nghệ thuật Gia Lai, 
+                Trường Trung cấp Kinh tế – Kỹ thuật Nam Gia Lai, Trường Trung cấp Kinh tế – Kỹ thuật Đông Gia Lai 
+                vào Trường Cao đẳng nghề Gia Lai.
               </p>
               <p>
-                Nhà trường là đơn vị công lập duy nhất trên địa bàn tỉnh đào tạo nguồn nhân lực chất lượng cao 
-                phục vụ phát triển kinh tế - xã hội của tỉnh Gia Lai và khu vực Tây Nguyên.
+                Nhà trường là đơn vị công lập duy nhất trên địa bàn tỉnh với <strong>5 địa điểm đào tạo</strong>, 
+                đào tạo nguồn nhân lực chất lượng cao phục vụ phát triển kinh tế - xã hội của tỉnh Gia Lai và khu vực Tây Nguyên.
               </p>
             </div>
             
-            <Button 
-              className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Xem thêm
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <a href="https://cdgl.edu.vn/khoa/tong-quan/" target="_blank" rel="noopener noreferrer">
+              <Button 
+                className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Xem thêm
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>

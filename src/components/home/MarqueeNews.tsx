@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 const announcements = [
   {
     title: "Trường Cao đẳng Gia Lai Thông báo Tuyển sinh và Đào tạo Giấy phép lái xe ô tô các hạng B, C1",
-    link: "#",
+    link: "https://cdgl.edu.vn/thong-bao-tuyen-sinh-va-dao-tao-giay-phep-lai-xe-o-to-cac-hang-b-c1/",
     isNew: true,
   },
   {
     title: "Trường Cao đẳng Gia Lai thông báo tuyển sinh năm 2025",
-    link: "#",
+    link: "https://cdgl.edu.vn/thong-bao-tuyen-sinh-nam-2024/",
     isNew: true,
   },
   {
     title: "TRƯỜNG CAO ĐẲNG GIA LAI CHÍNH THỨC THAM GIA HỆ THỐNG TUYỂN SINH CHUNG CỦA BỘ GIÁO DỤC VÀ ĐÀO TẠO",
-    link: "#",
+    link: "https://cdgl.edu.vn/truong-cao-dang-gia-lai-chinh-thuc-tham-gia-he-thong-tuyen-sinh-chung-cua-bo-giao-duc-va-dao-tao/",
     isNew: true,
   },
 ];
@@ -26,6 +26,8 @@ export function MarqueeNews() {
           <a
             key={index}
             href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center mx-8 text-primary-foreground hover:text-secondary transition-colors"
           >
             <span className="text-sm font-medium">{item.title}</span>

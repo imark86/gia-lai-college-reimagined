@@ -32,28 +32,32 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base px-8"
-            >
-              Đăng ký tư vấn
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-base px-8"
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              02693 825 001
-            </Button>
+            <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base px-8"
+              >
+                Đăng ký tư vấn
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+            <a href="tel:02696296999">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-base px-8"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                0269 629 6999
+              </Button>
+            </a>
           </div>
 
           {/* Trust badges */}
           <div className="mt-12 pt-8 border-t border-primary-foreground/10">
             <p className="text-sm text-primary-foreground/60 mb-4">Được công nhận bởi</p>
             <div className="flex flex-wrap justify-center gap-8 items-center">
-              {["Bộ LĐ-TB&XH", "UBND Tỉnh Gia Lai", "Tổng cục GDNN"].map((org) => (
+              {["UBND Tỉnh Gia Lai", "Sở LĐ-TB&XH Gia Lai", "Bộ Giáo dục và Đào tạo"].map((org) => (
                 <span key={org} className="text-primary-foreground/70 text-sm font-medium">
                   {org}
                 </span>
