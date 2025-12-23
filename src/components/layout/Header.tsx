@@ -53,7 +53,7 @@ const navItems = [
     label: "Tuyển sinh",
     href: "https://cdgl.edu.vn/category/tuyen-sinh/",
     children: [
-      { label: "Đăng ký trực tuyến", href: "https://cdgl.edu.vn/dang-ky-truc-tuyen/" },
+      { label: "Đăng ký trực tuyến", href: "/dang-ky-tuyen-sinh", internal: true },
       { label: "Cẩm nang hướng nghiệp", href: "https://cdgl.edu.vn/?post_type=blocks&p=2054&preview=true#flipbook-df_2005/1/" },
       { label: "Video tuyển sinh", href: "https://cdgl.edu.vn/category/tuyen-sinh/video-tuyen-sinh/" },
       { label: "Câu hỏi thường gặp", href: "/faq", internal: true },
@@ -217,13 +217,13 @@ export function Header() {
                 <Phone className="h-4 w-4" />
                 <span>02696.296.999</span>
               </a>
-              <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
+              <Link to="/dang-ky-tuyen-sinh">
                 <Button
                   className="hidden md:flex bg-gradient-primary text-white hover:opacity-90 rounded-xl font-medium shadow-glow"
                 >
                   Đăng ký ngay
                 </Button>
-              </a>
+              </Link>
               <Button
                 variant="ghost"
                 size="icon"
@@ -268,11 +268,11 @@ export function Header() {
                     </a>
                   )
                 ))}
-                <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
+                <Link to="/dang-ky-tuyen-sinh" onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full mt-4 bg-gradient-primary text-white hover:opacity-90 rounded-xl">
                     Đăng ký tuyển sinh
                   </Button>
-                </a>
+                </Link>
               </div>
             </motion.div>
           )}
