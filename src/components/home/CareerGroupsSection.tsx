@@ -6,113 +6,116 @@ import {
   Car, 
   Cpu, 
   ChefHat, 
-  Palette, 
-  Building, 
   Leaf, 
   ArrowRight,
   Users,
   TrendingUp,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Music,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const careerGroups = [
   {
-    id: "y-te",
-    name: "Nhóm ngành Y tế - Sức khỏe",
+    id: "cong-nghe-ky-thuat",
+    name: "Nhóm ngành Công nghệ - Kỹ thuật",
+    description: "Đào tạo kỹ sư, kỹ thuật viên trong lĩnh vực điện, cơ khí, ô tô, CNTT, xây dựng",
+    icon: Cpu,
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-500/10",
+    level: "Cao đẳng & Trung cấp",
+    programs: [
+      { name: "Điện công nghiệp", slug: "dien-cong-nghiep", code: "6520227", hot: true },
+      { name: "Vận hành, sửa chữa thiết bị lạnh", slug: "thiet-bi-lanh", code: "6520255", hot: false },
+      { name: "Công nghệ kỹ thuật cơ khí", slug: "cong-nghe-co-khi", code: "6510201", hot: false },
+      { name: "Công nghệ ô tô", slug: "cong-nghe-o-to", code: "6510216", hot: true },
+      { name: "Công nghệ thông tin (ƯDPM)", slug: "cong-nghe-thong-tin", code: "6480202", hot: true },
+      { name: "Công nghệ hàn", slug: "cong-nghe-han", code: "6520123", hot: false },
+      { name: "Kỹ thuật xây dựng", slug: "ky-thuat-xay-dung", code: "6580201", hot: false }
+    ],
+    stats: { duration: "2.5 năm", tuition: "768.200 - 801.550đ/tháng" }
+  },
+  {
+    id: "y-duoc",
+    name: "Nhóm ngành Y - Dược",
     description: "Đào tạo nhân lực y tế chất lượng cao, chăm sóc sức khỏe cộng đồng",
     icon: Stethoscope,
     color: "from-red-500 to-pink-500",
     bgColor: "bg-red-500/10",
+    level: "Cao đẳng",
     programs: [
-      { name: "Điều dưỡng", slug: "dieu-duong", hot: true },
-      { name: "Dược", slug: "duoc", hot: true },
-      { name: "Hộ sinh", slug: "ho-sinh", hot: false }
+      { name: "Dược", slug: "duoc", code: "6720201", hot: true },
+      { name: "Điều dưỡng", slug: "dieu-duong", code: "6720301", hot: true }
     ],
-    stats: { jobs: "1000+", salary: "8-18 triệu" }
+    stats: { duration: "3 năm", tuition: "934.950đ/tháng" }
   },
   {
-    id: "cong-nghe",
-    name: "Nhóm ngành Công nghệ - Kỹ thuật",
-    description: "Đào tạo kỹ sư, kỹ thuật viên trong lĩnh vực công nghệ cao",
-    icon: Cpu,
-    color: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-500/10",
-    programs: [
-      { name: "Công nghệ Thông tin", slug: "cong-nghe-thong-tin", hot: true },
-      { name: "Điện công nghiệp", slug: "dien-cong-nghiep", hot: false },
-      { name: "Điện tử công nghiệp", slug: "dien-tu-cong-nghiep", hot: false }
-    ],
-    stats: { jobs: "2000+", salary: "10-25 triệu" }
-  },
-  {
-    id: "o-to",
-    name: "Nhóm ngành Ô tô - Động lực",
-    description: "Đào tạo kỹ thuật viên sửa chữa, bảo dưỡng ô tô và máy nông nghiệp",
-    icon: Car,
-    color: "from-orange-500 to-amber-500",
-    bgColor: "bg-orange-500/10",
-    programs: [
-      { name: "Công nghệ Ô tô", slug: "cong-nghe-o-to", hot: true },
-      { name: "Máy nông nghiệp", slug: "may-nong-nghiep", hot: false }
-    ],
-    stats: { jobs: "800+", salary: "8-20 triệu" }
-  },
-  {
-    id: "du-lich",
-    name: "Nhóm ngành Du lịch - Dịch vụ",
-    description: "Đào tạo nhân lực cho ngành du lịch, nhà hàng khách sạn",
+    id: "nghiep-vu-du-lich",
+    name: "Nhóm ngành Nghiệp vụ - Du lịch",
+    description: "Đào tạo nhân lực cho ngành du lịch, khách sạn, kế toán, công tác xã hội",
     icon: ChefHat,
     color: "from-emerald-500 to-teal-500",
     bgColor: "bg-emerald-500/10",
+    level: "Cao đẳng & Trung cấp",
     programs: [
-      { name: "Kỹ thuật Chế biến món ăn", slug: "ky-thuat-che-bien", hot: true },
-      { name: "Quản trị khách sạn", slug: "quan-tri-khach-san", hot: false },
-      { name: "Hướng dẫn du lịch", slug: "huong-dan-du-lich", hot: false }
+      { name: "Công tác xã hội", slug: "cong-tac-xa-hoi", code: "6760101", hot: false },
+      { name: "Quản trị khách sạn", slug: "quan-tri-khach-san", code: "6810201", hot: true },
+      { name: "Kế toán doanh nghiệp", slug: "ke-toan-doanh-nghiep", code: "6340302", hot: false },
+      { name: "Kỹ thuật chế biến món ăn", slug: "ky-thuat-che-bien", code: "5810207", hot: true },
+      { name: "May thời trang", slug: "may-thoi-trang", code: "5540205", hot: false }
     ],
-    stats: { jobs: "1500+", salary: "8-25 triệu" }
+    stats: { duration: "2 - 2.5 năm", tuition: "534.750 - 668.150đ/tháng" }
   },
   {
-    id: "thiet-ke",
-    name: "Nhóm ngành Thiết kế - Sáng tạo",
-    description: "Đào tạo nhà thiết kế, nghệ sĩ trong lĩnh vực đa phương tiện",
-    icon: Palette,
-    color: "from-purple-500 to-violet-500",
-    bgColor: "bg-purple-500/10",
-    programs: [
-      { name: "Thiết kế Đồ họa", slug: "thiet-ke-do-hoa", hot: true },
-      { name: "Mỹ thuật tạo hình", slug: "my-thuat-tao-hinh", hot: false }
-    ],
-    stats: { jobs: "500+", salary: "10-30 triệu" }
-  },
-  {
-    id: "co-khi",
-    name: "Nhóm ngành Cơ khí - Xây dựng",
-    description: "Đào tạo kỹ thuật viên gia công cơ khí, hàn và xây dựng",
-    icon: Building,
-    color: "from-gray-600 to-slate-600",
-    bgColor: "bg-gray-500/10",
-    programs: [
-      { name: "Cơ khí chế tạo", slug: "co-khi-che-tao", hot: false },
-      { name: "Hàn công nghiệp", slug: "han-cong-nghiep", hot: true },
-      { name: "Xây dựng dân dụng", slug: "xay-dung-dan-dung", hot: false }
-    ],
-    stats: { jobs: "1200+", salary: "10-22 triệu" }
-  },
-  {
-    id: "nong-lam",
+    id: "nong-lam-nghiep",
     name: "Nhóm ngành Nông - Lâm nghiệp",
-    description: "Đào tạo kỹ thuật viên nông nghiệp, phục vụ phát triển bền vững",
+    description: "Đào tạo kỹ thuật viên nông nghiệp, thú y phục vụ phát triển bền vững Tây Nguyên",
     icon: Leaf,
     color: "from-green-500 to-lime-500",
     bgColor: "bg-green-500/10",
+    level: "Cao đẳng & Trung cấp",
     programs: [
-      { name: "Trồng trọt", slug: "trong-trot", hot: false },
-      { name: "Chăn nuôi", slug: "chan-nuoi", hot: false },
-      { name: "Lâm nghiệp", slug: "lam-nghiep", hot: false }
+      { name: "Bảo vệ thực vật", slug: "bao-ve-thuc-vat", code: "6620116", hot: false },
+      { name: "Thú y (Trung cấp)", slug: "thu-y", code: "5640101", hot: false }
     ],
-    stats: { jobs: "600+", salary: "7-15 triệu" }
+    stats: { duration: "2 - 2.5 năm", tuition: "552.000đ/tháng" }
+  },
+  {
+    id: "van-hoa-nghe-thuat",
+    name: "Nhóm ngành Văn hoá Nghệ thuật",
+    description: "Đào tạo nghệ sĩ, diễn viên và cán bộ văn hóa phục vụ bản sắc Tây Nguyên",
+    icon: Music,
+    color: "from-purple-500 to-violet-500",
+    bgColor: "bg-purple-500/10",
+    level: "Trung cấp",
+    programs: [
+      { name: "Biểu diễn nhạc cụ PT (Guitar)", slug: "bieu-dien-guitar", code: "5210217", hot: false },
+      { name: "Biểu diễn nhạc cụ TT (T'Rưng)", slug: "bieu-dien-trung", code: "5210216", hot: true },
+      { name: "Organ", slug: "organ", code: "5210224", hot: false },
+      { name: "Thanh nhạc", slug: "thanh-nhac", code: "5210225", hot: false },
+      { name: "Nghệ thuật biểu diễn múa", slug: "nghe-thuat-mua", code: "5210207", hot: false }
+    ],
+    stats: { duration: "2 - 3 năm", tuition: "534.750đ/tháng" }
+  },
+  {
+    id: "trung-cap-ky-thuat",
+    name: "Trung cấp Kỹ thuật - Máy nông nghiệp",
+    description: "Đào tạo kỹ thuật viên điện, ô tô, hàn, máy nông nghiệp, CNTT trình độ trung cấp",
+    icon: Car,
+    color: "from-orange-500 to-amber-500",
+    bgColor: "bg-orange-500/10",
+    level: "Trung cấp",
+    programs: [
+      { name: "Điện công nghiệp", slug: "tc-dien-cong-nghiep", code: "5520227", hot: false },
+      { name: "Công nghệ ô tô", slug: "tc-cong-nghe-o-to", code: "5510216", hot: true },
+      { name: "Công nghệ hàn", slug: "tc-cong-nghe-han", code: "5520123", hot: false },
+      { name: "Kỹ thuật máy nông nghiệp", slug: "ky-thuat-may-nong-nghiep", code: "5520102", hot: false },
+      { name: "Công nghệ thông tin", slug: "tc-cong-nghe-thong-tin", code: "5480202", hot: false },
+      { name: "Kỹ thuật xây dựng", slug: "tc-ky-thuat-xay-dung", code: "5580201", hot: false }
+    ],
+    stats: { duration: "2 năm", tuition: "Theo nhóm ngành" }
   }
 ];
 
@@ -140,13 +143,13 @@ export function CareerGroupsSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mb-4">
             <TrendingUp className="h-4 w-4 text-primary" />
-            <span className="text-sm font-semibold text-primary">Định hướng nghề nghiệp</span>
+            <span className="text-sm font-semibold text-primary">Tuyển sinh năm 2026</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Nhóm ngành <span className="text-gradient">đào tạo</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            Khám phá các nhóm ngành nghề phù hợp với đam mê và năng lực của bạn
+            13 ngành Cao đẳng + 14 ngành Trung cấp. Xét tuyển học bạ hoặc điểm thi tốt nghiệp THPT/THCS
           </p>
           
           {/* Toggle Button */}
@@ -162,7 +165,7 @@ export function CareerGroupsSection() {
               </>
             ) : (
               <>
-                <span>Xem 7 nhóm ngành đào tạo</span>
+                <span>Xem 6 nhóm ngành đào tạo</span>
                 <ChevronDown className="h-4 w-4" />
               </>
             )}
@@ -179,7 +182,7 @@ export function CareerGroupsSection() {
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
                 {careerGroups.map((group, index) => (
                   <motion.div
                     key={group.id}
@@ -196,6 +199,11 @@ export function CareerGroupsSection() {
                       <group.icon className="h-7 w-7 text-primary" />
                     </div>
 
+                    {/* Level badge */}
+                    <span className="inline-block text-xs font-medium text-accent bg-accent/10 px-2 py-1 rounded-full mb-2">
+                      {group.level}
+                    </span>
+
                     {/* Title & Description */}
                     <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {group.name}
@@ -205,31 +213,31 @@ export function CareerGroupsSection() {
                     </p>
 
                     {/* Programs list */}
-                    <div className="space-y-2 mb-4">
-                      {group.programs.slice(0, 3).map((program) => (
+                    <div className="space-y-2 mb-4 max-h-40 overflow-y-auto">
+                      {group.programs.map((program) => (
                         <Link
                           key={program.slug}
                           to={`/nganh/${program.slug}`}
                           className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0" />
                           <span className="truncate">{program.name}</span>
                           {program.hot && (
-                            <span className="px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded-full">HOT</span>
+                            <span className="px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded-full flex-shrink-0">HOT</span>
                           )}
                         </Link>
                       ))}
                     </div>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-4 pt-4 border-t border-border/50">
+                    <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
                       <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                         <Users className="h-3.5 w-3.5" />
-                        <span>{group.stats.jobs} việc làm</span>
+                        <span>Thời gian: {group.stats.duration}</span>
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                         <TrendingUp className="h-3.5 w-3.5" />
-                        <span>{group.stats.salary}</span>
+                        <span>Học phí: {group.stats.tuition}</span>
                       </div>
                     </div>
 
@@ -241,12 +249,43 @@ export function CareerGroupsSection() {
                 ))}
               </div>
 
+              {/* Additional info */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mt-8 p-6 bg-muted/50 rounded-2xl border border-border/50"
+              >
+                <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                  Thông tin tuyển sinh 2026
+                </h4>
+                <ul className="grid md:grid-cols-2 gap-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span><strong>Cao đẳng:</strong> Tốt nghiệp THPT, xét điểm thi TN THPT hoặc học bạ lớp 12</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span><strong>Trung cấp:</strong> Tốt nghiệp THCS/THPT hoặc tương đương</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span><strong>Thời gian nhận hồ sơ:</strong> Từ 01/3/2026 đến 30/11/2026</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span><strong>Nhập học dự kiến:</strong> Tháng 9/2026</span>
+                  </li>
+                </ul>
+              </motion.div>
+
               {/* CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-center mt-12"
+                className="text-center mt-8"
               >
                 <Link
                   to="https://cdgl.edu.vn/tuyen-sinh-2025/"
@@ -256,6 +295,10 @@ export function CareerGroupsSection() {
                   Đăng ký tư vấn ngay
                   <ArrowRight className="h-5 w-5" />
                 </Link>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Hotline: <a href="tel:02696296999" className="text-primary font-medium">0269.6296.999</a> | 
+                  Liên kết đào tạo ĐH: <a href="tel:02693501047" className="text-primary font-medium">0269.3501.047</a>
+                </p>
               </motion.div>
             </motion.div>
           )}

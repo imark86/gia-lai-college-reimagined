@@ -1,143 +1,155 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Stethoscope, Car, Laptop, Wrench, ChefHat, Palette, Cog, BookOpen, Pill, Baby, Map, Building, Briefcase, Music, Leaf } from "lucide-react";
+import { ArrowRight, Stethoscope, Car, Laptop, Wrench, Snowflake, Cog, BookOpen, Pill, Building, Briefcase, Leaf, Users, Hammer, HardHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const programs = [
-  {
-    icon: Stethoscope,
-    title: "Điều dưỡng",
-    slug: "dieu-duong",
-    description: "Đào tạo nhân lực y tế chất lượng cao, thực hành tại các bệnh viện lớn",
-    duration: "3 năm",
-    tuition: "12 triệu/năm",
-    color: "bg-rose-500/10 text-rose-600",
-  },
-  {
-    icon: Pill,
-    title: "Dược",
-    slug: "duoc",
-    description: "Đào tạo dược sĩ tư vấn, bán thuốc và quản lý nhà thuốc",
-    duration: "3 năm",
-    tuition: "14 triệu/năm",
-    color: "bg-pink-500/10 text-pink-600",
-  },
-  {
-    icon: Car,
-    title: "Công nghệ Ô tô",
-    slug: "cong-nghe-o-to",
-    description: "Sửa chữa, bảo dưỡng ô tô hiện đại với trang thiết bị tiên tiến",
-    duration: "3 năm",
-    tuition: "11 triệu/năm",
-    color: "bg-blue-500/10 text-blue-600",
-  },
-  {
-    icon: Laptop,
-    title: "Công nghệ Thông tin",
-    slug: "cong-nghe-thong-tin",
-    description: "Lập trình, thiết kế web, quản trị mạng và an ninh mạng",
-    duration: "3 năm",
-    tuition: "12.5 triệu/năm",
-    color: "bg-emerald-500/10 text-emerald-600",
-  },
+  // Nhóm ngành Công nghệ - Kỹ thuật
   {
     icon: Wrench,
     title: "Điện công nghiệp",
     slug: "dien-cong-nghiep",
-    description: "Vận hành, sửa chữa hệ thống điện trong nhà máy, xí nghiệp",
-    duration: "3 năm",
-    tuition: "10.5 triệu/năm",
+    code: "6520227",
+    description: "Vận hành, sửa chữa hệ thống điện trong nhà máy, xí nghiệp công nghiệp",
+    duration: "2.5 năm",
+    tuition: "801.550đ/tháng",
     color: "bg-amber-500/10 text-amber-600",
+    group: "Công nghệ - Kỹ thuật"
   },
   {
-    icon: ChefHat,
-    title: "Kỹ thuật Chế biến",
-    slug: "ky-thuat-che-bien",
-    description: "Chế biến món ăn, quản lý nhà hàng khách sạn chuyên nghiệp",
+    icon: Snowflake,
+    title: "Vận hành, sửa chữa thiết bị lạnh",
+    slug: "thiet-bi-lanh",
+    code: "6520255",
+    description: "Vận hành, bảo trì hệ thống điều hòa không khí và thiết bị lạnh công nghiệp",
     duration: "2.5 năm",
-    tuition: "11.5 triệu/năm",
-    color: "bg-orange-500/10 text-orange-600",
-  },
-  {
-    icon: Palette,
-    title: "Thiết kế Đồ họa",
-    slug: "thiet-ke-do-hoa",
-    description: "Thiết kế sáng tạo, đa phương tiện và truyền thông số",
-    duration: "2.5 năm",
-    tuition: "13 triệu/năm",
-    color: "bg-purple-500/10 text-purple-600",
+    tuition: "801.550đ/tháng",
+    color: "bg-cyan-500/10 text-cyan-600",
+    group: "Công nghệ - Kỹ thuật"
   },
   {
     icon: Cog,
-    title: "Cơ khí chế tạo",
-    slug: "co-khi-che-tao",
-    description: "Gia công, chế tạo các sản phẩm cơ khí công nghiệp",
-    duration: "3 năm",
-    tuition: "10 triệu/năm",
+    title: "Công nghệ kỹ thuật cơ khí",
+    slug: "cong-nghe-co-khi",
+    code: "6510201",
+    description: "Gia công, chế tạo các sản phẩm cơ khí công nghiệp hiện đại",
+    duration: "2.5 năm",
+    tuition: "801.550đ/tháng",
     color: "bg-slate-500/10 text-slate-600",
+    group: "Công nghệ - Kỹ thuật"
   },
   {
-    icon: BookOpen,
-    title: "Kế toán Doanh nghiệp",
-    slug: "ke-toan-doanh-nghiep",
-    description: "Quản lý tài chính, kế toán cho các loại hình doanh nghiệp",
+    icon: Car,
+    title: "Công nghệ ô tô",
+    slug: "cong-nghe-o-to",
+    code: "6510216",
+    description: "Sửa chữa, bảo dưỡng ô tô hiện đại với trang thiết bị tiên tiến",
     duration: "2.5 năm",
-    tuition: "10.5 triệu/năm",
-    color: "bg-teal-500/10 text-teal-600",
+    tuition: "801.550đ/tháng",
+    color: "bg-blue-500/10 text-blue-600",
+    group: "Công nghệ - Kỹ thuật"
   },
   {
-    icon: Baby,
-    title: "Hộ sinh",
-    slug: "ho-sinh",
-    description: "Chăm sóc sức khỏe sinh sản, thai sản và trẻ sơ sinh",
+    icon: Laptop,
+    title: "Công nghệ thông tin (ƯDPM)",
+    slug: "cong-nghe-thong-tin",
+    code: "6480202",
+    description: "Lập trình, thiết kế web, ứng dụng phần mềm và quản trị mạng",
+    duration: "2.5 năm",
+    tuition: "801.550đ/tháng",
+    color: "bg-emerald-500/10 text-emerald-600",
+    group: "Công nghệ - Kỹ thuật"
+  },
+  {
+    icon: Hammer,
+    title: "Công nghệ hàn",
+    slug: "cong-nghe-han",
+    code: "6520123",
+    description: "Kỹ thuật hàn công nghiệp, hàn điện, hàn MIG/MAG/TIG chuyên nghiệp",
+    duration: "2.5 năm",
+    tuition: "801.550đ/tháng",
+    color: "bg-orange-500/10 text-orange-600",
+    group: "Công nghệ - Kỹ thuật"
+  },
+  {
+    icon: HardHat,
+    title: "Kỹ thuật xây dựng",
+    slug: "ky-thuat-xay-dung",
+    code: "6580201",
+    description: "Thi công, giám sát các công trình xây dựng dân dụng và công nghiệp",
+    duration: "2.5 năm",
+    tuition: "768.200đ/tháng",
+    color: "bg-stone-500/10 text-stone-600",
+    group: "Công nghệ - Kỹ thuật"
+  },
+  // Nhóm ngành Y - Dược (3 năm)
+  {
+    icon: Pill,
+    title: "Dược",
+    slug: "duoc",
+    code: "6720201",
+    description: "Đào tạo dược sĩ tư vấn, bán thuốc và quản lý nhà thuốc chuyên nghiệp",
     duration: "3 năm",
-    tuition: "12 triệu/năm",
-    color: "bg-red-500/10 text-red-600",
+    tuition: "934.950đ/tháng",
+    color: "bg-pink-500/10 text-pink-600",
+    group: "Y - Dược"
   },
   {
-    icon: Map,
-    title: "Hướng dẫn Du lịch",
-    slug: "huong-dan-du-lich",
-    description: "Hướng dẫn viên chuyên nghiệp, am hiểu văn hóa Tây Nguyên",
+    icon: Stethoscope,
+    title: "Điều dưỡng",
+    slug: "dieu-duong",
+    code: "6720301",
+    description: "Đào tạo nhân lực y tế chất lượng cao, thực hành tại các bệnh viện lớn",
+    duration: "3 năm",
+    tuition: "934.950đ/tháng",
+    color: "bg-rose-500/10 text-rose-600",
+    group: "Y - Dược"
+  },
+  // Nhóm ngành Nghiệp vụ - Du lịch
+  {
+    icon: Users,
+    title: "Công tác xã hội",
+    slug: "cong-tac-xa-hoi",
+    code: "6760101",
+    description: "Hỗ trợ, tư vấn và giải quyết các vấn đề xã hội cho cộng đồng",
     duration: "2.5 năm",
-    tuition: "10 triệu/năm",
-    color: "bg-cyan-500/10 text-cyan-600",
+    tuition: "534.750đ/tháng",
+    color: "bg-violet-500/10 text-violet-600",
+    group: "Nghiệp vụ - Du lịch"
   },
   {
     icon: Building,
-    title: "Quản trị Khách sạn",
+    title: "Quản trị khách sạn",
     slug: "quan-tri-khach-san",
+    code: "6810201",
     description: "Nhân viên và quản lý chuyên nghiệp trong lĩnh vực hospitality",
     duration: "2.5 năm",
-    tuition: "11 triệu/năm",
+    tuition: "668.150đ/tháng",
     color: "bg-indigo-500/10 text-indigo-600",
+    group: "Nghiệp vụ - Du lịch"
   },
   {
-    icon: Briefcase,
-    title: "Quản trị Kinh doanh",
-    slug: "quan-tri-kinh-doanh",
-    description: "Đào tạo nhà quản lý, doanh nhân với tư duy khởi nghiệp",
+    icon: BookOpen,
+    title: "Kế toán doanh nghiệp",
+    slug: "ke-toan-doanh-nghiep",
+    code: "6340302",
+    description: "Quản lý tài chính, kế toán cho các loại hình doanh nghiệp",
     duration: "2.5 năm",
-    tuition: "11.5 triệu/năm",
-    color: "bg-violet-500/10 text-violet-600",
+    tuition: "534.750đ/tháng",
+    color: "bg-teal-500/10 text-teal-600",
+    group: "Nghiệp vụ - Du lịch"
   },
-  {
-    icon: Music,
-    title: "Văn hóa Nghệ thuật",
-    slug: "van-hoa-nghe-thuat",
-    description: "Nghệ sĩ, diễn viên và cán bộ văn hóa Tây Nguyên",
-    duration: "3 năm",
-    tuition: "9.5 triệu/năm",
-    color: "bg-fuchsia-500/10 text-fuchsia-600",
-  },
+  // Nhóm ngành Nông - Lâm nghiệp
   {
     icon: Leaf,
-    title: "Nông Lâm nghiệp",
-    slug: "nong-lam-nghiep",
-    description: "Kỹ thuật viên nông nghiệp, lâm nghiệp phục vụ Tây Nguyên",
+    title: "Bảo vệ thực vật",
+    slug: "bao-ve-thuc-vat",
+    code: "6620116",
+    description: "Kỹ thuật viên bảo vệ thực vật, phòng trừ sâu bệnh cho cây trồng",
     duration: "2.5 năm",
-    tuition: "9 triệu/năm",
+    tuition: "552.000đ/tháng",
     color: "bg-lime-500/10 text-lime-600",
+    group: "Nông - Lâm nghiệp"
   },
 ];
 
@@ -154,14 +166,14 @@ export function ProgramsSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-            Chương trình đào tạo
+            Chương trình đào tạo Cao đẳng
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ngành nghề đào tạo chất lượng cao
+            13 ngành đào tạo trình độ Cao đẳng
           </h2>
           <p className="text-lg text-muted-foreground">
-            15 ngành đào tạo đa dạng đáp ứng nhu cầu thị trường lao động, 
-            cam kết hỗ trợ việc làm sau tốt nghiệp
+            Thời gian đào tạo: 2.5 năm (riêng ngành Y - Dược: 3 năm). 
+            Xét tuyển kết quả thi tốt nghiệp THPT hoặc điểm học bạ lớp 12.
           </p>
         </motion.div>
 
@@ -183,9 +195,14 @@ export function ProgramsSection() {
                   <program.icon className="h-6 w-6" />
                 </div>
                 
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {program.title}
-                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {program.title}
+                  </h3>
+                </div>
+                
+                <p className="text-xs text-muted-foreground mb-1">Mã ngành: {program.code}</p>
+                <p className="text-xs text-primary/80 bg-primary/5 px-2 py-0.5 rounded inline-block mb-3">{program.group}</p>
                 
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                   {program.description}
@@ -211,6 +228,20 @@ export function ProgramsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Note about tuition reduction */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 p-4 bg-accent/10 border border-accent/20 rounded-xl text-center"
+        >
+          <p className="text-sm text-muted-foreground">
+            <strong className="text-accent">Lưu ý:</strong> Giảm 70% học phí cho các ngành/nghề nặng nhọc, độc hại, nguy hiểm 
+            (trừ các ngành đánh dấu *). Xem chi tiết tại mục quyền lợi người học.
+          </p>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
