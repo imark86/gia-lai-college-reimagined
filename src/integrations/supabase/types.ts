@@ -14,7 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admission_registrations: {
+        Row: {
+          address: string
+          created_at: string
+          date_of_birth: string
+          education_level: string
+          email: string
+          full_name: string
+          gender: string
+          graduation_year: number
+          high_school: string
+          id: string
+          id_card_number: string
+          notes: string | null
+          phone: string
+          priority_group: string | null
+          program_code: string
+          program_name: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          date_of_birth: string
+          education_level?: string
+          email: string
+          full_name: string
+          gender: string
+          graduation_year: number
+          high_school: string
+          id?: string
+          id_card_number: string
+          notes?: string | null
+          phone: string
+          priority_group?: string | null
+          program_code: string
+          program_name: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          date_of_birth?: string
+          education_level?: string
+          email?: string
+          full_name?: string
+          gender?: string
+          graduation_year?: number
+          high_school?: string
+          id?: string
+          id_card_number?: string
+          notes?: string | null
+          phone?: string
+          priority_group?: string | null
+          program_code?: string
+          program_name?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
