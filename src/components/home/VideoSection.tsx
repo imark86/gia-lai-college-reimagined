@@ -6,43 +6,51 @@ import { Button } from "@/components/ui/button";
 const videos = [
   {
     id: "video1",
-    title: "Giới thiệu Trường Cao đẳng Gia Lai",
+    title: "Giới thiệu trường Cao đẳng Gia Lai 2024",
     description: "Tổng quan về cơ sở vật chất, đội ngũ giảng viên và môi trường học tập tại trường",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-    duration: "5:30"
+    thumbnail: "https://img.youtube.com/vi/dLL0IeM-PHA/maxresdefault.jpg",
+    youtubeId: "dLL0IeM-PHA",
+    duration: "6:56"
   },
   {
     id: "video2",
-    title: "Tuyển sinh 2025 - Cơ hội nghề nghiệp",
-    description: "Thông tin tuyển sinh và các ngành đào tạo hot nhất năm 2025",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-    duration: "8:45"
+    title: "Học nghề chất - Việc làm thật - Tương lai vững chắc",
+    description: "Thông tin tuyển sinh và cam kết chất lượng đào tạo của Cao đẳng Gia Lai",
+    thumbnail: "https://img.youtube.com/vi/PtBiddPHAHg/maxresdefault.jpg",
+    youtubeId: "PtBiddPHAHg",
+    duration: "6:22"
   },
   {
     id: "video3",
-    title: "Ký túc xá và đời sống sinh viên",
-    description: "Cuộc sống sinh viên tại Cao đẳng Gia Lai - Nơi nuôi dưỡng ước mơ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-    duration: "4:20"
+    title: "Giới thiệu các địa điểm đào tạo",
+    description: "Hệ thống 5 cơ sở đào tạo rộng khắp tỉnh Gia Lai",
+    thumbnail: "https://img.youtube.com/vi/XFU6mKaWauI/maxresdefault.jpg",
+    youtubeId: "XFU6mKaWauI",
+    duration: "4:01"
   },
   {
     id: "video4",
-    title: "Thực hành nghề nghiệp",
-    description: "Sinh viên thực hành tại các xưởng, phòng lab hiện đại của trường",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-    duration: "6:15"
+    title: "Thông tin học phí chính sách 2024",
+    description: "Chi tiết về học phí và các chế độ chính sách hỗ trợ sinh viên",
+    thumbnail: "https://img.youtube.com/vi/q2Zc6cmTR2Q/maxresdefault.jpg",
+    youtubeId: "q2Zc6cmTR2Q",
+    duration: "1:07"
   },
   {
     id: "video5",
-    title: "Lễ tốt nghiệp và việc làm",
-    description: "Câu chuyện thành công của cựu sinh viên sau khi ra trường",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-    duration: "7:00"
+    title: "Cao đẳng Gia Lai 2023",
+    description: "Những thành tích và hoạt động nổi bật của trường trong năm 2023",
+    thumbnail: "https://img.youtube.com/vi/qrFzVAu5gKw/maxresdefault.jpg",
+    youtubeId: "qrFzVAu5gKw",
+    duration: "7:42"
+  },
+  {
+    id: "video6",
+    title: "Giới thiệu Ngành Kế toán",
+    description: "Thông tin chi tiết về ngành Kế toán tại Cao đẳng Gia Lai",
+    thumbnail: "https://img.youtube.com/vi/BX98ZBUU3bc/maxresdefault.jpg",
+    youtubeId: "BX98ZBUU3bc",
+    duration: "3:34"
   }
 ];
 

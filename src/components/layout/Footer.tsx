@@ -2,10 +2,10 @@ import { Phone, Mail, MapPin, Facebook, Youtube, Globe, Send, Heart } from "luci
 import { Link } from "react-router-dom";
 
 const trainingLocations = [
-  "Cách Mạng Tháng 8, P. Pleiku",
-  "140 Nguyễn Chí Thanh, P. Hội Phú",
-  "282 Hoàng Hoa Thám, P. An Khê",
-  "69 Nguyễn Huệ, P. Ayun Pa",
+  "Cách Mạng Tháng 8, P. Hội Thương, TP. Pleiku",
+  "140 Nguyễn Chí Thanh, P. Hội Phú, TP. Pleiku",
+  "282 Hoàng Hoa Thám, P. An Bình, TX. An Khê",
+  "69 Nguyễn Huệ, P. Đoàn Kết, TX. Ayun Pa",
 ];
 
 const quickLinks = [
