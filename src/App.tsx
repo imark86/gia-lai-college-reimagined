@@ -9,6 +9,7 @@ import TinTuc from "./pages/TinTuc";
 import TinTucDetail from "./pages/TinTucDetail";
 import KhoaDetail from "./pages/KhoaDetail";
 import FAQ from "./pages/FAQ";
+import DangKyTuyenSinh from "./pages/DangKyTuyenSinh";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/tin-tuc/:slug" element={<TinTucDetail />} />
           <Route path="/khoa/:slug" element={<KhoaDetail />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/dang-ky-tuyen-sinh" element={<DangKyTuyenSinh />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
