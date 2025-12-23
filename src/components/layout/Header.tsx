@@ -56,6 +56,7 @@ const navItems = [
       { label: "Đăng ký trực tuyến", href: "https://cdgl.edu.vn/dang-ky-truc-tuyen/" },
       { label: "Cẩm nang hướng nghiệp", href: "https://cdgl.edu.vn/?post_type=blocks&p=2054&preview=true#flipbook-df_2005/1/" },
       { label: "Video tuyển sinh", href: "https://cdgl.edu.vn/category/tuyen-sinh/video-tuyen-sinh/" },
+      { label: "Câu hỏi thường gặp", href: "/faq", internal: true },
     ],
   },
   {
