@@ -1008,7 +1008,7 @@ export default function NganhDetail() {
                   </a>
                   <div className="flex items-center gap-2 justify-center text-sm text-muted-foreground">
                     <Phone className="h-4 w-4" />
-                    Hotline: <a href="tel:02693825001" className="text-primary font-medium hover:underline">02693.825001</a>
+                    Hotline: <a href="tel:02696296999" className="text-primary font-medium hover:underline">02696.296.999</a>
                   </div>
                 </motion.div>
 

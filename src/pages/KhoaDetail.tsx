@@ -59,7 +59,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5001",
+      phone: "02696.296.999",
       email: "khoaddtth@cdgl.edu.vn"
     },
     nganhList: [
@@ -92,7 +92,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5002",
+      phone: "02696.296.999",
       email: "khoadlmnn@cdgl.edu.vn"
     },
     nganhList: [
@@ -124,7 +124,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5003",
+      phone: "02696.296.999",
       email: "khoackkxd@cdgl.edu.vn"
     },
     nganhList: [
@@ -157,7 +157,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5004",
+      phone: "02696.296.999",
       email: "khoayduoc@cdgl.edu.vn"
     },
     nganhList: [
@@ -190,7 +190,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5005",
+      phone: "02696.296.999",
       email: "khoanvdl@cdgl.edu.vn"
     },
     nganhList: [
@@ -223,7 +223,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5006",
+      phone: "02696.296.999",
       email: "khoavhnt@cdgl.edu.vn"
     },
     nganhList: [
@@ -255,7 +255,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5007",
+      phone: "02696.296.999",
       email: "khoanonglam@cdgl.edu.vn"
     },
     nganhList: [
@@ -288,7 +288,7 @@ const khoaData: Record<string, KhoaInfo> = {
     ],
     contact: {
       address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
-      phone: "0269 382 5008",
+      phone: "02696.296.999",
       email: "khoacoban@cdgl.edu.vn"
     },
     nganhList: []

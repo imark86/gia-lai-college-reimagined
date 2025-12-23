@@ -160,8 +160,7 @@ export function CareerGroupsSection() {
               
               {/* Icon */}
               <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${group.bgColor} mb-4`}>
-                <group.icon className={`h-7 w-7 bg-gradient-to-r ${group.color} bg-clip-text`} style={{ color: 'transparent', backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }} />
-                <group.icon className={`h-7 w-7`} style={{ color: group.color.includes('red') ? '#ef4444' : group.color.includes('blue') ? '#3b82f6' : group.color.includes('orange') ? '#f97316' : group.color.includes('emerald') ? '#10b981' : group.color.includes('purple') ? '#a855f7' : group.color.includes('gray') ? '#6b7280' : '#22c55e' }} />
+                <group.icon className="h-7 w-7 text-primary" />
               </div>
 
               {/* Title & Description */}

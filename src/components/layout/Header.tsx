@@ -212,9 +212,9 @@ export function Header() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              <a href="tel:02693825001" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:02696296999" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4" />
-                <span>02693.825001</span>
+                <span>02696.296.999</span>
               </a>
               <a href="https://cdgl.edu.vn/dang-ky-truc-tuyen/" target="_blank" rel="noopener noreferrer">
                 <Button

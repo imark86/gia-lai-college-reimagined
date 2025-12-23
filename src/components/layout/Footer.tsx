@@ -51,9 +51,9 @@ export function Footer() {
                   <p className="text-muted-foreground">Tỉnh Gia Lai</p>
                 </div>
               </div>
-              <a href="tel:02693825001" className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
+              <a href="tel:02696296999" className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
                 <Phone className="h-5 w-5 text-primary" />
-                02693.825001
+                02696.296.999
               </a>
               <a href="mailto:info@cdgl.edu.vn" className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
                 <Mail className="h-5 w-5 text-primary" />
