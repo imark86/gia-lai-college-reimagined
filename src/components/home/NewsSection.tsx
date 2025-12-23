@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Eye, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -80,13 +81,15 @@ export function NewsSection() {
               Cập nhật thông tin mới nhất về hoạt động đào tạo, sự kiện và cơ hội nghề nghiệp
             </p>
           </div>
-          <Button 
-            variant="outline" 
-            className="self-start md:self-auto group border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            Xem tất cả tin tức
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link to="/tin-tuc">
+            <Button 
+              variant="outline" 
+              className="self-start md:self-auto group border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              Xem tất cả tin tức
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </motion.div>
 
         {/* News Grid */}
