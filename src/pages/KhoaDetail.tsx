@@ -58,7 +58,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Chứng nhận ISO 9001:2015"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoaddtth@cdgl.edu.vn"
     },
@@ -91,7 +91,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Liên kết với 20+ doanh nghiệp ô tô"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoadlmnn@cdgl.edu.vn"
     },
@@ -123,7 +123,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Giải nhất thi tay nghề hàn khu vực"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoackkxd@cdgl.edu.vn"
     },
@@ -156,7 +156,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Chương trình đào tạo đạt chuẩn Bộ Y tế"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoayduoc@cdgl.edu.vn"
     },
@@ -189,7 +189,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Chương trình đào tạo theo chuẩn VTOS"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoanvdl@cdgl.edu.vn"
     },
@@ -222,7 +222,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Sinh viên làm freelancer từ năm 2"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoavhnt@cdgl.edu.vn"
     },
@@ -254,7 +254,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Chương trình thực tập tại trang trại"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoanonglam@cdgl.edu.vn"
     },
@@ -287,7 +287,7 @@ const khoaData: Record<string, KhoaInfo> = {
       "Chứng chỉ Tiếng Anh theo chuẩn TOEIC"
     ],
     contact: {
-      address: "Khu Đô Thị Diên Phú-Diên Hồng, TP. Pleiku, Gia Lai",
+      address: "Đường Trần Nhật Duật, P. Diên Hồng, TP. Pleiku, Gia Lai",
       phone: "02696.296.999",
       email: "khoacoban@cdgl.edu.vn"
     },

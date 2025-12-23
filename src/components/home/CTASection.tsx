@@ -59,7 +59,7 @@ export function CTASection() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>
-            <a href="tel:02693825001">
+            <a href="tel:02696296999">
               <Button
                 size="lg"
                 variant="outline"

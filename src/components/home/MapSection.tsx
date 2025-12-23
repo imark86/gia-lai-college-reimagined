@@ -17,7 +17,7 @@ const campuses = [
   {
     id: 2,
     name: "Cơ sở Cách Mạng Tháng 8",
-    address: "Cách Mạng Tháng 8, P. Pleiku, TP. Pleiku, Gia Lai",
+    address: "Cách Mạng Tháng 8, P. Hội Thương, TP. Pleiku, Gia Lai",
     phone: "02696.296.999",
     hours: "07:00 - 17:00",
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.5!2d107.985!3d13.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316bfe!2zQ8ahIHPhu58gMg!5e0!3m2!1svi!2svn!4v1",
@@ -37,11 +37,21 @@ const campuses = [
   {
     id: 4,
     name: "Cơ sở An Khê",
-    address: "282 Hoàng Hoa Thám, P. An Khê, TX. An Khê, Gia Lai",
+    address: "282 Hoàng Hoa Thám, P. An Bình, TX. An Khê, Gia Lai",
     phone: "02696.296.999",
     hours: "07:00 - 17:00",
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881!2d108.66!3d13.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c00!2zQ8ahIHPhu58gQW4gS2jDqg!5e0!3m2!1svi!2svn!4v1",
     image: "https://cdgl.edu.vn/wp-content/uploads/2024/03/co-so-an-khe.jpg",
+    isMain: false,
+  },
+  {
+    id: 5,
+    name: "Cơ sở Ayun Pa",
+    address: "69 Nguyễn Huệ, P. Đoàn Kết, TX. Ayun Pa, Gia Lai",
+    phone: "02696.296.999",
+    hours: "07:00 - 17:00",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881!2d108.4!3d13.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c00!2zQ8ahIHPhu58gQXl1biBQYQ!5e0!3m2!1svi!2svn!4v1",
+    image: "https://cdgl.edu.vn/wp-content/uploads/2024/03/co-so-ayunpa.jpg",
     isMain: false,
   },
 ];
@@ -86,7 +96,7 @@ export function MapSection() {
           </motion.span>
           
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            4 cơ sở <span className="text-gradient">trải rộng Gia Lai</span>
+            5 cơ sở <span className="text-gradient">trải rộng Gia Lai</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Mạng lưới cơ sở đào tạo rộng khắp tỉnh, thuận tiện cho sinh viên ở mọi khu vực
